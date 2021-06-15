@@ -1,0 +1,100 @@
+ stages:
+   - test
+
+ html-checker:
+   stage: test
+   before_script:
+   - bash
+   - >
+    if [[ $(find . -type f -name '*.html' | wc -l) -eq 0 ]]; then
+        exit 0
+    fi
+   - apt-get update
+   - apt-get -qq -y install npm curl
+   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+   - npm -qq -y install -g htmlhint
+   - export NVM_DIR="${HOME}/.nvm" 
+   - \. "$NVM_DIR/nvm.sh"    
+   - nvm install node
+   script:
+   - htmlhint .
+
+ css-checker:  
+   stage: test
+   before_script:
+   - bash
+   - >
+    if [[ $(find . -type f -name '*.css' | wc -l) -eq 0 ]]; then
+        exit 0
+    fi
+   - apt-get update
+   - apt-get -qq -y install npm
+   - npm -qq -y install -g stylelint stylelint-config-standard
+   script:
+   - stylelint .
+   
+ js-checker:  
+   stage: test
+   before_script:
+   - bash
+   - >
+    if [[ $(find . -type f -name '*.js' | wc -l) -eq 0 ]]; then
+        exit 0
+    fi
+   - apt-get update
+   - apt-get -qq -y install npm
+   - npm -qq -y install -g jshint
+   script:
+   - jshint .
+
+ xml-checker:
+   stage: test
+   before_script:
+   - skipValidation=0;
+   - directoryToTestNormal="u3";
+   - directoryToTestPibs="u8";
+   - dirExists=$(find . -type d);
+   - apt-get update
+   - apt-get -qq -y install libxml2-utils
+   script:
+   - xmlErrorPattern="error";
+   - echo "Validating xsd for School:";
+   - xsdErrorsNormal=$(xmllint --schema ./$directoryToTestNormal/school.xsd --noout ./$directoryToTestNormal/school.xml);
+   - >
+     if echo "$xsdErrorsNormal" | grep -q "$xmlErrorPattern"; then
+       echo "ERROR: there are some errors in school.xsd";
+       echo $xsdErrorsNormal;
+       exit 1;
+     else
+       echo "OK: there are no errors in XML";
+     fi
+   - xsdErrorsPibs=$(xmllint --schema ./$directoryToTestPibs/school.xsd --noout ./$directoryToTestPibs/school.xml);
+   - >
+     if echo "$xsdErrorsPibs" | grep -q "$xmlErrorPattern"; then
+       echo "ERROR: there are some errors in school.xsd";
+       echo $xsdErrorsPibs;
+       exit 1;
+     else
+       echo "OK: there are no errors in XML";
+     fi
+   - echo "Validating xml for Book:";
+   - xmlErrorsNormal=$(xmllint --schema ./$directoryToTestNormal/books.xsd --noout ./$directoryToTestNormal/books.xml);  
+   - >
+     if echo "$xmlErrorsNormal" | grep -q "$xmlErrorPattern"; then
+       echo "ERROR: there are some errors in books.xml";
+       echo $xmlErrorsNormal;
+       exit 1;
+     else
+       echo "OK: there are no errors in XML";
+       exit 0;
+     fi
+   - xmlErrorsPibs=$(xmllint --schema ./$directoryToTestPibs/books.xsd --noout ./$directoryToTestPibs/books.xml);
+   - >
+     if echo "$xmlErrorsPibs" | grep -q "$xmlErrorPattern"; then
+       echo "ERROR: there are some errors in books.xml";
+       echo $xmlErrorsPibs;
+       exit 1;
+     else
+       echo "OK: there are no errors in XML";
+       exit 0;
+     fi
