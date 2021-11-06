@@ -3,12 +3,13 @@
 <meta charset="UTF-8">
 <title>Tony's Pizza Factory</title>
 <style>
-  @import "../../../semesterarbeit-josef-schoenhuber/webf/css/Stylesheet Tony.css";
+  @import "Stylesheet Tony.css";
 </style>
 
 <script>
-  @import("../../../semesterarbeit-josef-schoenhuber/webf/js/TonysPizza_Script")
+  @import("TonysPizza_Script")
 </script>
+
 
 <head>
 
@@ -94,13 +95,11 @@
     <div class="col-3 col-s-3">
       <div class="card">
         <p>What can we do better?</p>
-
-        <form method="POST" action="example.cgi">
-
-          <p><textarea name="item3" cols="50" rows="10"></textarea></p>
-
-          <p><input type="submit" value="Submit" id="example2"></p>
+        <form method="GET" action="/">
+          <p><textarea id="Textform" name="item3" cols="50" rows="10"></textarea></p>
+          <button type= "submit" >Submit</button>
         </form>
+        <div id="error"></div>
 
       </div>
     </div>
