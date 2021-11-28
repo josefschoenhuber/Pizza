@@ -30,6 +30,7 @@
    - apt-get update
    - apt-get -qq -y install npm
    - npm -qq -y install -g stylelint stylelint-config-standard
+   - npm -qq -y install -g stylelint@13.13.1 stylelint-config-standard@22.0.0
    script:
    - stylelint .
    
