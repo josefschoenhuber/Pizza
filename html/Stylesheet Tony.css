@@ -77,6 +77,18 @@ main {
     border-radius: 15px;
 }
 
+.card2 {
+   );
+    padding: 1em;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+}
+
+
 /* link styles */
 a:link, a:visited { color: #DC6903; }
 a:focus, a:hover, a:active { color: #F9AB33; }
@@ -194,6 +206,12 @@ h7 {
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 * When the screen is less than 600 pixels wide, hide all links, except for the first one ("Tony's Pizza Factory"). Show the link that contains should open and close the topnav (.icon) */
