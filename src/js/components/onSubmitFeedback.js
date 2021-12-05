@@ -1,6 +1,6 @@
 export const onSubmitFeedback = () => {
+    
     const form = document.forms['feedback'];
-
     if (!form) return;
 
     const fields = {

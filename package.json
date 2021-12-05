@@ -2,5 +2,14 @@
   "name": "webf",
   "version": "1.0.0",
   "dependencies": {
+    "axios": "^0.24.0"
+  },
+  "scripts": {
+		"watch": "webpack --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+		"prod": "webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+		"build": "webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+	},
+  "devDependencies": {
+    "laravel-mix": "^6.0.39"
   }
 }

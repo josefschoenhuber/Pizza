@@ -1,7 +1,14 @@
 import { onSubmitFeedback } from "./components/onSubmitFeedback.js";
+import { getPizzas } from "./components/getPizzas.js";
+import { authorize } from "./components/authorize.js";
 
-const init = () => {
-  onSubmitFeedback();
+const core = async () => {
+  const isAuthorized = await authorize();
+
+  if (isAuthorized) {
+    getPizzas();
+    onSubmitFeedback();
+  }
 }
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", core);
