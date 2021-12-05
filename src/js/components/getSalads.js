@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { API_URL } from '../settings/constants';
 
-export const getPizzas = async () => {
+export const getSalads = async () => {
   const token = localStorage.getItem('auth');
-  const wrapper = document.querySelector('.pizzas');
+  const wrapper = document.querySelector('.salads');
 
   if (!wrapper || !token) return;
 
   const results = await axios
-    .get(`${API_URL}/pizzas`, {
+    .get(`${API_URL}/salads`, {
       headers: {
         Authorization: token,
       }
@@ -25,7 +25,7 @@ export const getPizzas = async () => {
 
 const createElement = (wrapper, data) => {
   const element = document.createElement('div');
-  element.classList.add('pizzas__item');
+  element.classList.add('salads__item');
 
   element.innerHTML = `
     <div class="card">

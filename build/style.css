@@ -76,13 +76,20 @@ text-align: center;
     border-radius: 15px;
 }
 
-.pizzas {
+.card img {
+    max-height: 200px;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+.grid {
     position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-template-rows: repeat(2, 1fr);
     gap: 30px;
     height: auto;
+    padding: 0 30px
 }
 
 /* link styles */
