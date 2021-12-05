@@ -1,4 +1,8 @@
-const init = () => {
+export const onSubmitFeedback = () => {
+    const form = document.forms['feedback'];
+
+    if (!form) return;
+
     const fields = {
         firstName: document.getElementById('firstName'),
         lastName: document.getElementById('lastName'),
@@ -10,7 +14,6 @@ const init = () => {
         question: document.getElementById('question'),
         rating: document.getElementById('rating'),
         pricing: document.getElementById('pricing'),
-
     };
 
     const errorElements = {
@@ -132,5 +135,3 @@ const init = () => {
 
     setEvents();
 }
-
-document.addEventListener("DOMContentLoaded", init);

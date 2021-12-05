@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tony's Pizza Factory - Feedback</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="topnav" id="myTopnav">
+            <a href="/">Tony's Pizza Factory</a>
+            <a href="pizza.html">Pizza</a>
+            <a href="salad.html">Salad</a>
+            <a href="drinks.html">Softdrinks</a>
+            <a href="feedback.html" class="active">Feedback</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-1 col-s-1">
+            <div class="card2">
+            </div>
+        </div>
+
+        <div class="col-2 col-s-2">
+            <div class="card">
+
+                <h1>Tell us what you think</h1>
+                <br>
+
+                <form id="contact">
+
+                    <input type="text" placeholder="Enter your first name" id="firstName" />
+                    <div class="error error--firstName"></div>
+
+                    <input type="text" placeholder="Enter your last name" id="lastName" />
+                    <div class="error error--lastName"></div>
+
+                    <input type="email" placeholder="Enter your email" id="email" />
+                    <span class="error error--email"></span>
+                    <br><br>
+
+
+                    <select id="country">
+                        <option disabled selected value> -- select a country -- </option>
+                        <option value="USA">USA</option>
+                        <option value="Canada">Canada</option>
+                        <option value="RoW">Rest of World</option>
+                    </select>
+                    <span class="error error--country"></span>
+                    <br><br>
+
+                    <input type="password" placeholder="Enter password" id="password" />
+                    <span class="error error--password"></span>
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="password" placeholder="Enter password (check)" id="passwordCheck" />
+                    <span class="error error--passwordCheck"></span>
+                    <br><br>
+
+                    <input type="checkbox" id="newsletter" />Send me monthly newsletter
+                    <span class="error error--newsletter"></span>
+                    <br><br>
+
+                    <h4>How do you like our Pizza?</h4>
+                    <input type="radio" id="Awesome" name="rating" value="1"> Awesome
+                    <input type="radio" id="Good" name="rating" value="2"> Good
+                    <input type="radio" id="Okay" name="rating" value="3"> Okay
+                    <input type="radio" id="Poor" name="rating" value="4"> Poor
+                    <span class="error error--rating"></span>
+                    <br><br>
+
+                    <h4>What do you think about our prizes?</h4>
+                    <input type="radio" id="Fair" name="pricing" value="1"> Fair
+                    <input type="radio" id="Okay" name="pricing" value="2"> Okay
+                    <input type="radio" id="Expensive" name="pricing" value="3"> Expensive
+                    <span class="error error--pricing"></span>
+
+                    <br><br>
+
+
+                    <span>What is your question?</span>
+                    <br>
+                    <textarea id="question" rows="4"></textarea>
+                    <span class="error error--question"></span>
+                    <br><br>
+
+                    <button id="submitButton">Submit Feedback</button>
+
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <footer>
+
+        <div class="row">
+            <div class="col-1 col-s-1">
+                <div class="card">
+                    <h5>Hours:
+                        <dl>Mon-Thu: 11am - 23pm</dl>
+                        <dl>Fri-Sat: - 24pm</dl>
+                        <dl>Sunday closed</dl>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="col-2 col-s-2">
+                <div class="card">
+                    <h4>
+                        <p><q>The Pizzeria is one place I have been wanting to visit for a long time. The reason being
+                                their
+                                Rustica pizza which absolutely blew me away.</q> Jimmy
+                    </h4>
+                </div>
+            </div>
+
+
+            <div class="col-3 col-s-3">
+                <div class="card">
+                    <h5>Address:
+                        <dl> Tony's Pizza Factory</dl>
+                        <dl>2122 N Clark St</dl>
+                        <dl> Chicago, IL 60614, USA</dl>
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <script type="module" src="/src/js/core.js"></script>
+</body>
+
+</html>
