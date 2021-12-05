@@ -2255,13 +2255,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var getPizzas = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var token, result;
+    var token, wrapper, results;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             token = localStorage.getItem('auth');
-            _context.next = 3;
+            wrapper = document.querySelector('.pizzas');
+
+            if (!(!wrapper || !token)) {
+              _context.next = 4;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 4:
+            _context.next = 6;
             return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/pizzas"), {
               headers: {
                 Authorization: token
@@ -2272,11 +2282,22 @@ var getPizzas = /*#__PURE__*/function () {
               return console.log(error);
             });
 
-          case 3:
-            result = _context.sent;
-            console.log(result);
+          case 6:
+            results = _context.sent;
 
-          case 5:
+            if (results) {
+              _context.next = 9;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 9:
+            results.forEach(function (result) {
+              return createElement(wrapper, result);
+            });
+
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -2289,7 +2310,11 @@ var getPizzas = /*#__PURE__*/function () {
   };
 }();
 
-var buildElements = function buildElements() {};
+var createElement = function createElement(wrapper, data) {
+  var element = document.createElement('div');
+  element.classList.add('pizzas__item');
+  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"/images/Pizza%20Food%20Hd%20Wallpaper.jpg\">\n      <h2>Giardino 16$<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span>\n                  </a> <br>\n      </h2>\n      <h8>Tomato, mozzarella, artichokes, fresh mushrooms</h8>\n      <br>\n    </div>\n  ";
+};
 
 /***/ }),
 
@@ -2318,8 +2343,8 @@ var onSubmitFeedback = function onSubmitFeedback() {
     passwordCheck: document.getElementById('passwordCheck'),
     newsletter: document.getElementById('newsletter'),
     question: document.getElementById('question'),
-    rating: document.getElementById('rating'),
-    pricing: document.getElementById('pricing')
+    rating: document.getElementsByName('rating'),
+    pricing: document.getElementsByName('pricing')
   };
   var errorElements = {
     firstName: document.querySelector('.error--firstName'),
@@ -2335,13 +2360,18 @@ var onSubmitFeedback = function onSubmitFeedback() {
   };
   var button = document.getElementById('submitButton');
 
-  function getRating() {
-    return document.querySelector('input[name="rating"]:checked');
-  }
+  var checkRadios = function checkRadios(items) {
+    var isValid = true;
+    items.forEach(function (item) {
+      if (item.checked === false) return isValid = false;
+    });
 
-  function getPricing() {
-    return document.querySelector('input[name="pricing"]:checked');
-  }
+    if (!isValid) {
+      return 'The radios are empty';
+    }
+
+    return '';
+  };
 
   var setEvents = function setEvents() {
     button.addEventListener('click', sendContact);
@@ -2363,7 +2393,12 @@ var onSubmitFeedback = function onSubmitFeedback() {
 
   function isEmail(email) {
     var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    return regex.test(String(email).toLowerCase());
+
+    if (regex.test(String(email).toLowerCase())) {
+      return '';
+    } else {
+      return 'The field is not an email';
+    }
   }
 
   function isPasswordValid(password) {
@@ -2375,9 +2410,8 @@ var onSubmitFeedback = function onSubmitFeedback() {
   }
 
   function fieldValidation(field, validationFunction, errorElement) {
-    console.log(errorElement);
     if (field == null) return false;
-    var errorMessage = validationFunction(field.value);
+    var errorMessage = validationFunction(field.length === 1 ? field.value : field);
 
     if (errorMessage) {
       return errorElement.innerHTML = errorMessage;
@@ -2388,14 +2422,16 @@ var onSubmitFeedback = function onSubmitFeedback() {
     var valid = true;
     valid &= fieldValidation(fields.firstName, isNotEmpty, errorElements.firstName);
     valid &= fieldValidation(fields.lastName, isNotEmpty, errorElements.lastName);
-    valid &= fieldValidation(fields.rating, isNotEmpty, errorElements.rating);
-    valid &= fieldValidation(fields.pricing, isNotEmpty, errorElements.pricing);
     valid &= fieldValidation(fields.country, isNotEmpty, errorElements.country);
     valid &= fieldValidation(fields.email, isEmail, errorElements.email);
     valid &= fieldValidation(fields.password, isPasswordValid, errorElements.password);
     valid &= fieldValidation(fields.passwordCheck, isPasswordValid, errorElements.passwordCheck);
     valid &= fieldValidation(fields.question, isNotEmpty, errorElements.question);
-    valid &= arePasswordsEqual();
+    valid &= fieldValidation(fields.rating, checkRadios, errorElements.rating);
+    valid &= fieldValidation(fields.pricing, checkRadios, errorElements.pricing);
+    valid &= arePasswordsEqual(); // valid &= checkRadios(fields.rating, errorElements.rating);
+    // valid &= checkRadios(fields.pricing, errorElements.pricing);
+
     return valid;
   }
 

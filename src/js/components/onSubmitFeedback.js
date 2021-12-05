@@ -1,5 +1,5 @@
 export const onSubmitFeedback = () => {
-    
+
     const form = document.forms['feedback'];
     if (!form) return;
 
@@ -12,8 +12,8 @@ export const onSubmitFeedback = () => {
         passwordCheck: document.getElementById('passwordCheck'),
         newsletter: document.getElementById('newsletter'),
         question: document.getElementById('question'),
-        rating: document.getElementById('rating'),
-        pricing: document.getElementById('pricing'),
+        rating: document.getElementsByName('rating'),
+        pricing: document.getElementsByName('pricing'),
     };
 
     const errorElements = {
@@ -31,14 +31,19 @@ export const onSubmitFeedback = () => {
 
     const button = document.getElementById('submitButton');
 
-    function getRating() {
-        return document.querySelector('input[name="rating"]:checked')
-    }
+    const checkRadios = (items) => {
+        let isValid = true;
 
-    function getPricing() {
-        return document.querySelector('input[name="pricing"]:checked')
-    }
+        items.forEach(item => {
+            if (item.checked === false) return isValid = false;
+        })
 
+        if (!isValid) {
+            return 'The radios are empty';
+        }
+
+        return '';
+    }
 
     const setEvents = () => {
         button.addEventListener('click', sendContact);
@@ -59,7 +64,11 @@ export const onSubmitFeedback = () => {
 
     function isEmail(email) {
         let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        return regex.test(String(email).toLowerCase());
+        if (regex.test(String(email).toLowerCase())) {
+            return '';
+        } else {
+            return 'The field is not an email';
+        }
     }
 
     function isPasswordValid(password) {
@@ -70,11 +79,10 @@ export const onSubmitFeedback = () => {
     }
 
     function fieldValidation(field, validationFunction, errorElement) {
-        console.log(errorElement);
-
         if (field == null) return false;
 
-        let errorMessage = validationFunction(field.value)
+        let errorMessage = validationFunction(field.length === 1 ? field.value : field);
+
         if (errorMessage) {
             return errorElement.innerHTML = errorMessage;
         }
@@ -87,14 +95,18 @@ export const onSubmitFeedback = () => {
 
         valid &= fieldValidation(fields.firstName, isNotEmpty, errorElements.firstName);
         valid &= fieldValidation(fields.lastName, isNotEmpty, errorElements.lastName);
-        valid &= fieldValidation(fields.rating, isNotEmpty, errorElements.rating);
-        valid &= fieldValidation(fields.pricing, isNotEmpty, errorElements.pricing);
         valid &= fieldValidation(fields.country, isNotEmpty, errorElements.country);
         valid &= fieldValidation(fields.email, isEmail, errorElements.email);
         valid &= fieldValidation(fields.password, isPasswordValid, errorElements.password);
         valid &= fieldValidation(fields.passwordCheck, isPasswordValid, errorElements.passwordCheck);
         valid &= fieldValidation(fields.question, isNotEmpty, errorElements.question);
+        valid &= fieldValidation(fields.rating, checkRadios, errorElements.rating);
+        valid &= fieldValidation(fields.pricing, checkRadios, errorElements.pricing);
+
         valid &= arePasswordsEqual();
+
+        // valid &= checkRadios(fields.rating, errorElements.rating);
+        // valid &= checkRadios(fields.pricing, errorElements.pricing);
 
         return valid;
     }
