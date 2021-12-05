@@ -30,7 +30,7 @@ const createElement = (wrapper, data) => {
   element.innerHTML = `
     <div class="card">
       <img src="${data.imageUrl}">
-      <h2>${data.name} ${data.price}<a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a> <br>
+      <h2>${data.name} ${data.prize}<a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a> <br>
       </h2>
       <h8>volume: ${data.volume}</h8>
       <br>

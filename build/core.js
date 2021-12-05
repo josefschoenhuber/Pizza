@@ -2339,7 +2339,7 @@ var getPizzas = /*#__PURE__*/function () {
 var createElement = function createElement(wrapper, data) {
   var element = document.createElement('div');
   element.classList.add('pizzas__item');
-  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.price, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
+  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
   });
@@ -2433,7 +2433,7 @@ var getSalads = /*#__PURE__*/function () {
 var createElement = function createElement(wrapper, data) {
   var element = document.createElement('div');
   element.classList.add('salads__item');
-  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.price, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
+  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
   });
@@ -2527,7 +2527,7 @@ var getSoftDrinks = /*#__PURE__*/function () {
 var createElement = function createElement(wrapper, data) {
   var element = document.createElement('div');
   element.classList.add('softDrinks__item');
-  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.price, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>volume: ").concat(data.volume, "</h8>\n      <br>\n    </div>\n  ");
+  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>volume: ").concat(data.volume, "</h8>\n      <br>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
   });
