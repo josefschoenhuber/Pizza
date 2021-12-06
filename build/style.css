@@ -276,7 +276,7 @@ html {
 body {
   color: #2A2E31;
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 /*
@@ -1127,6 +1127,8 @@ body {
   place-items: center;
   height: 100%;
   transition: 0.2s;
+  position: relative;
+  z-index: 1;
 }
 .header__logo:hover {
   opacity: 0.5;
@@ -1200,7 +1202,7 @@ body {
   top: 0;
   right: -100%;
   height: 100%;
-  background-color: white;
+  background-color: #FBCA71;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1215,6 +1217,9 @@ body {
 .header__hamburgerMenuLink {
   display: block;
   font-size: 1.6rem;
-  padding: 20px;
+  padding: 15px;
+}
+.header__hamburgerMenuLink--active {
+  border-bottom: 3px solid;
   font-weight: 600;
 }
