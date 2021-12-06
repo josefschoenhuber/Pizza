@@ -1,0 +1,35 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $cMain;
+
+  &__inner {
+    display: flex;
+    justify-content: center
+  }
+
+  &__menu {
+    display: flex;
+  }
+
+  &__menuItem {
+    margin: 0 10px;
+
+    &:hover {
+      opacity: .5;
+    }
+
+    &--active {
+      font-weight: 700;
+      border-bottom: 3px solid $cBlack;
+    }
+  }
+
+  &__menuLink {
+    display: block;
+    padding: 25px 5px;
+    transition: 0.1s;
+  }
+}

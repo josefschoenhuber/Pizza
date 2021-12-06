@@ -5,5 +5,5 @@ mix.options({
   publicPath: ('./'),
 });
 
-mix.js('src/js/core.js', 'build');
-mix.css('src/css/style.css', 'build');
+mix.js('src/js/core.js', 'build/script.js');
+mix.sass('src/scss/core.scss', 'build/style.css');

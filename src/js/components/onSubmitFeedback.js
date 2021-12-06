@@ -45,24 +45,20 @@ export const onSubmitFeedback = () => {
         return '';
     }
 
-    const setEvents = () => {
-        button.addEventListener('click', sendContact);
-    }
-
-    function isNotEmpty(value) {
+    const isNotEmpty = (value) => {
         if (value.length == 0 || value == null || typeof value == 'undefined') {
             return 'The field is empty';
         } else return '';
     }
 
-    function isNumber(num) {
+    const isNumber = (num) => {
         if ((num.length > 0) && !isNaN(num)) {
             return '';
         }
         return 'The field is empty';
     }
 
-    function isEmail(email) {
+    const isEmail = (email) => {
         let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         if (regex.test(String(email).toLowerCase())) {
             return '';
@@ -71,14 +67,14 @@ export const onSubmitFeedback = () => {
         }
     }
 
-    function isPasswordValid(password) {
+    const isPasswordValid = (password) => {
         if (password.length > 5) {
             return true;
         }
         return false
     }
 
-    function fieldValidation(field, validationFunction, errorElement) {
+    const fieldValidation = (field, validationFunction, errorElement) => {
         if (field == null) return false;
 
         let errorMessage = validationFunction(field.length === 1 ? field.value : field);
@@ -88,9 +84,16 @@ export const onSubmitFeedback = () => {
         }
     }
 
+        const arePasswordsEqual = () => {
+            if (fields.password.value == fields.passwordCheck.value) {
+                fields.password.className = 'placeholderRed';
+                fields.passwordCheck.className = 'placeholderRed';
+                return true;
+            }
+            return false
+        }
 
-
-    function isValid() {
+    const isValid = () =>{
         var valid = true;
 
         valid &= fieldValidation(fields.firstName, isNotEmpty, errorElements.firstName);
@@ -105,44 +108,38 @@ export const onSubmitFeedback = () => {
 
         valid &= arePasswordsEqual();
 
-        // valid &= checkRadios(fields.rating, errorElements.rating);
-        // valid &= checkRadios(fields.pricing, errorElements.pricing);
-
         return valid;
     }
 
-    function arePasswordsEqual() {
-        if (fields.password.value == fields.passwordCheck.value) {
-            fields.password.className = 'placeholderRed';
-            fields.passwordCheck.className = 'placeholderRed';
-            return true;
-        }
-        return false
-    }
-
-    class User {
-        constructor(firstName, lastName, rating, pricing, country, email, newsletter, question, password, passwordCheck) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.rating = rating;
-            this.pricing = pricing;
-            this.country = country;
-            this.email = email;
-            this.newsletter = newsletter;
-            this.question = question;
-            this.password = password;
-            this.passwordCheck = passwordCheck;
-        }
-    }
-
-    function sendContact(event) {
+    function addFeedback(event) {
         event.preventDefault();
+
         if (isValid()) {
-            let usr = new User(firstName.value, lastName.value, rating.value, pricing.value, country.value, email.value, newsletter.checked, password.checked);
-            alert(`${usr.firstName} thanks for registering.`)
+
         } else {
             alert("There was an error")
         }
+    }
+
+    const checkFill = () => {
+        if (!fields.firstName.value) return;
+        if (!fields.lastName.value) return;
+        if (!fields.email.value) return;
+        if (!fields.country.value) return;
+        if (!fields.password.value) return;
+        if (!fields.passwordCheck.value) return;
+        if (!fields.newsletter.value) return;
+        if (!fields.question.value) return;
+
+        if (checkRadios(fields.rating)) return;
+        if (checkRadios(fields.pricing)) return;
+
+        button.classList.remove('disabled');
+    }
+
+    const setEvents = () => {
+        button.addEventListener('click', addFeedback);
+        form.addEventListener('change', checkFill);
     }
 
     setEvents();

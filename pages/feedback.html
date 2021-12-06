@@ -10,20 +10,28 @@
 </head>
 
 <body>
-
-    <header>
-        <div class="topnav" id="myTopnav">
-            <a href="/">Tony's Pizza Factory</a>
-            <a href="pizza.html">Pizza</a>
-            <a href="salad.html">Salad</a>
-            <a href="drinks.html">Soft Drinks</a>
-            <a href="feedback.html" class="active">Feedback</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+    <header class="header">
+        <div class="header__inner">
+            <ul class="header__menu">
+                <li class="header__menuItem">
+                    <a class="header__menuLink" href="/">Tony's Pizza Factory</a>
+                </li>
+                <li class="header__menuItem">
+                    <a class="header__menuLink" href="pizza.html">Pizza</a>
+                </li>
+                <li class="header__menuItem">
+                    <a class="header__menuLink" href="salad.html">Salad</a>
+                </li>
+                <li class="header__menuItem">
+                    <a class="header__menuLink" href="drinks.html">Soft Drinks</a>
+                </li>
+                <li class="header__menuItem header__menuItem--active">
+                    <a class="header__menuLink" href="feedback.html">Feedback</a>
+                </li>
+            </ul>
         </div>
     </header>
-
+    <!-- 
     <div class="row">
         <div class="col-1 col-s-1">
             <div class="card2">
@@ -92,7 +100,7 @@
                     <span class="error error--question"></span>
                     <br><br>
 
-                    <button id="submitButton">Submit Feedback</button>
+                    <button id="submitButton" class="disabled">Submit Feedback</button>
 
                 </form>
 
@@ -139,8 +147,8 @@
             </div>
         </div>
 
-    </footer>
-    <script type="module" src="/build/core.js"></script>
+    </footer> -->
+    <script type="module" src="/build/script.js"></script>
 </body>
 
 </html>

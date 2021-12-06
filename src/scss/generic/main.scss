@@ -1,0 +1,17 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $fMain;
+  font-size: 10px;
+  line-height: 1;
+}
+
+body {
+  color: $cSec;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
