@@ -3,7 +3,7 @@ import { API_URL } from '../settings/constants';
 
 export const getSoftDrinks = async () => {
   const token = localStorage.getItem('auth');
-  const wrapper = document.querySelector('.softDrinks');
+  const wrapper = document.querySelector('[data-soft-drinks]');
 
   if (!wrapper || !token) return;
 
@@ -25,15 +25,19 @@ export const getSoftDrinks = async () => {
 
 const createElement = (wrapper, data) => {
   const element = document.createElement('div');
-  element.classList.add('softDrinks__item');
+  element.classList.add('card');
 
   element.innerHTML = `
-    <div class="card">
-      <img src="${data.imageUrl}">
-      <h2>${data.name} ${data.price}<a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a> <br>
-      </h2>
-      <h8>volume: ${data.volume}</h8>
-      <br>
+    <div class="card__inner">
+      <div class="card__imageWrapper">
+        <img class="card__image" src="${data.imageUrl}">
+      </div>
+      <div class="card__content">
+        <h2 class="card__title">
+          ${data.name} ${data.prize} <a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a>
+        </h2>
+        <h8>volume: ${data.volume}</h8>
+      </div>
     </div>
   `;
 

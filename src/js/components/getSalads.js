@@ -3,7 +3,7 @@ import { API_URL } from '../settings/constants';
 
 export const getSalads = async () => {
   const token = localStorage.getItem('auth');
-  const wrapper = document.querySelector('.salads');
+  const wrapper = document.querySelector('[data-salad]');
 
   if (!wrapper || !token) return;
 
@@ -25,18 +25,21 @@ export const getSalads = async () => {
 
 const createElement = (wrapper, data) => {
   const element = document.createElement('div');
-  element.classList.add('salads__item');
+  element.classList.add('card');
 
   element.innerHTML = `
-    <div class="card">
-      <img src="${data.imageUrl}">
-      <h2>${data.name} ${data.price}<a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a> <br>
-      </h2>
-      <h8>${data.ingredients.join(', ')}</h8>
-      <br>
+    <div class="card__inner">
+      <div class="card__imageWrapper">
+        <img class="card__image" src="${data.imageUrl}">
+      </div>
+      <div class="card__content">
+        <h2 class="card__title">
+          ${data.name} ${data.prize} <a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a>
+        </h2>
+        <h8  class="card__description">${data.ingredients.join(', ')}</h8>
+      </div>
     </div>
   `;
-
   element.addEventListener('click', () => {
     console.log(data.id);
   })

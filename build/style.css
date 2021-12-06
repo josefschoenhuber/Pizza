@@ -296,6 +296,7 @@ body {
 
 .sections {
   margin-top: 70px;
+  min-height: 80vh;
 }
 
 /*
