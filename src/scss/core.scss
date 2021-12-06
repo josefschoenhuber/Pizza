@@ -13,6 +13,9 @@
 @import './generic/main';
 @import './layout/grid';
 @import './layout/header';
+@import './layout/footer';
+
+@import './components/card';
 
 // * {
 //     box-sizing: border-box;
@@ -93,15 +96,7 @@
 //     object-fit: cover;
 // }
 
-// .grid {
-//     position: relative;
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-//     grid-template-rows: repeat(2, 1fr);
-//     gap: 30px;
-//     height: auto;
-//     padding: 0 30px
-// }
+
 
 // /* link styles */
 // a:link, a:visited { color: #DC6903; }

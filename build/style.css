@@ -279,6 +279,25 @@ body {
   font-size: 1.5rem;
 }
 
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  height: auto;
+  padding: 50px 0;
+}
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+.sections {
+  margin-top: 70px;
+}
+
 /*
   This grid is a simplified version of Bootstrap Grid system:
   https://getbootstrap.com/docs/3.3/css/#grid
@@ -1116,6 +1135,7 @@ body {
   left: 0;
   width: 100%;
   background-color: #FBCA71;
+  z-index: 100;
 }
 .header__inner {
   display: flex;
@@ -1128,7 +1148,7 @@ body {
   height: 100%;
   transition: 0.2s;
   position: relative;
-  z-index: 1;
+  z-index: 200;
 }
 .header__logo:hover {
   opacity: 0.5;
@@ -1184,7 +1204,7 @@ body {
 }
 .header__hamburgerIcon {
   position: relative;
-  z-index: 1;
+  z-index: 200;
 }
 .header__hamburgerLine {
   width: 40px;
@@ -1222,4 +1242,54 @@ body {
 .header__hamburgerMenuLink--active {
   border-bottom: 3px solid;
   font-weight: 600;
+}
+
+.footer {
+  background-color: #2A2E31;
+  color: #ffffff;
+  padding: 50px 0;
+}
+.footer__columns {
+  display: flex;
+  gap: 40px;
+}
+.footer__column {
+  flex: 1;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.footer__columnTitle {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.footer__quote {
+  flex: 3;
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.footer__quoteAuthor {
+  font-weight: 600;
+}
+
+.card {
+  border-radius: 30px;
+  background-color: #ffffff;
+  box-shadow: 0px 7px 19px 1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+.card__content {
+  padding: 15px;
+}
+.card__image {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 180px;
+}
+.card__title {
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+  font-weight: 700;
 }

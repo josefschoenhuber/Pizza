@@ -6,6 +6,7 @@
   left: 0;
   width: 100%;
   background-color: $cMain;
+  z-index: 100;
 
   &__inner {
     display: flex;
@@ -19,7 +20,7 @@
     height: 100%;
     transition: .2s;
     position: relative;
-    z-index: 1;
+    z-index: 200;
 
     &:hover {
       opacity: .5;
@@ -96,7 +97,7 @@
 
   &__hamburgerIcon {
     position: relative;
-    z-index: 1;
+    z-index: 200;
   }
 
   &__hamburgerLine {

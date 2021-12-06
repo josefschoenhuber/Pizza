@@ -2286,7 +2286,7 @@ var getPizzas = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             token = localStorage.getItem('auth');
-            wrapper = document.querySelector('.pizzas');
+            wrapper = document.querySelector('[data-pizza]');
 
             if (!(!wrapper || !token)) {
               _context.next = 4;
@@ -2338,8 +2338,8 @@ var getPizzas = /*#__PURE__*/function () {
 
 var createElement = function createElement(wrapper, data) {
   var element = document.createElement('div');
-  element.classList.add('pizzas__item');
-  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.price, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
+  element.classList.add('card');
+  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.ingredients.join(', '), "</h8>\n      </div>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
   });

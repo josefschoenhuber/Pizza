@@ -1,0 +1,26 @@
+.card {
+  border-radius: 30px;
+  background-color: $cWhite;
+  box-shadow: $cShadow;
+  overflow: hidden;
+
+  &__imageWrapper {
+
+  }
+
+  &__content {
+    padding: 15px;
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    max-height: 180px;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+}
