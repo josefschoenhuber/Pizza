@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '../settings/constants';
 
-export const requestData = async (wrapper, endpoint) => {
+export const requestData = async (wrapper, endpoint, type) => {
   const token = localStorage.getItem('auth');
 
   if (!wrapper || !token) return;
@@ -14,16 +14,17 @@ export const requestData = async (wrapper, endpoint) => {
     })
     .then((response) => response.data)
     .catch((error) => console.log(error))
-    
+
   if (!results) return;
 
   wrapper.innerHTML = "";
 
-  results.forEach((result) => createElement(wrapper, result));
+  results.forEach((result) => createElement(wrapper, result, type));
 }
 
-const createElement = (wrapper, data) => {
+const createElement = (wrapper, data, type) => {
   const element = document.createElement('div');
+
   element.classList.add('card');
 
   element.innerHTML = `
@@ -33,15 +34,31 @@ const createElement = (wrapper, data) => {
       </div>
       <div class="card__content">
         <h2 class="card__title">
-          ${data.name} ${data.prize} <a href="#"> <span class="card__cartIcon" </span> </a>
+          <span class="card__titleContent">${data.name}</span> 
+          <span class="card__buttonPrice" data-price>${data.prize}<span class="card__cartIcon"></span></span>
         </h2>
         <h8  class="card__description">${data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume}</h8>
       </div>
     </div>
   `;
-  element.addEventListener('click', () => {
-    console.log(data.id);
-  })
+
+  const button = element.querySelector('[data-price]');
+
+  const orderProduct = async () => {
+    const token = localStorage.getItem('auth');
+
+    await axios.post(`${API_URL}/orders`, {
+        type: type,
+        name: data.name,
+      }, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then(response => console.log(response))
+  }
+
+  button.addEventListener('click', orderProduct);
 
   wrapper.appendChild(element);
 }

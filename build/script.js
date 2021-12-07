@@ -2246,20 +2246,23 @@ var fetchAll = function fetchAll() {
   var selectors = {
     pizza: {
       wrapper: document.querySelector('[data-pizza]'),
-      endpoint: 'pizzas'
+      endpoint: 'pizzas',
+      type: 'pizza'
     },
     salad: {
       wrapper: document.querySelector('[data-salad]'),
-      endpoint: 'salads'
+      endpoint: 'salads',
+      type: 'salad'
     },
     drink: {
       wrapper: document.querySelector('[data-soft-drinks]'),
-      endpoint: 'softdrinks'
+      endpoint: 'softdrinks',
+      type: 'softdrink'
     }
   };
-  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.pizza.wrapper, selectors.pizza.endpoint);
-  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.salad.wrapper, selectors.salad.endpoint);
-  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.drink.wrapper, selectors.drink.endpoint);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.pizza.wrapper, selectors.pizza.endpoint, selectors.pizza.type);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.salad.wrapper, selectors.salad.endpoint, selectors.salad.type);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.drink.wrapper, selectors.drink.endpoint, selectors.drink.type);
 };
 
 /***/ }),
@@ -2283,6 +2286,68 @@ var hamburgerToggle = function hamburgerToggle() {
     wrapper.classList.toggle('header__hamburger--active');
   });
 };
+
+/***/ }),
+
+/***/ "./src/js/components/handleCart.js":
+/*!*****************************************!*\
+  !*** ./src/js/components/handleCart.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "handleCart": () => (/* binding */ handleCart)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var handleCart = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var token, wrapper, cart;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            token = localStorage.getItem('auth');
+            wrapper = document.querySelector('[data-cart-token]');
+            _context.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/orders"), {
+              headers: {
+                Authorization: token
+              }
+            }).then(function (response) {
+              return response.data;
+            })["catch"](function (error) {
+              return console.log(error);
+            });
+
+          case 4:
+            cart = _context.sent;
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function handleCart() {
+    return _ref.apply(this, arguments);
+  };
+}();
 
 /***/ }),
 
@@ -2460,7 +2525,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var requestData = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(wrapper, endpoint) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(wrapper, endpoint, type) {
     var token, results;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
       while (1) {
@@ -2500,7 +2565,7 @@ var requestData = /*#__PURE__*/function () {
           case 8:
             wrapper.innerHTML = "";
             results.forEach(function (result) {
-              return createElement(wrapper, result);
+              return createElement(wrapper, result, type);
             });
 
           case 10:
@@ -2511,18 +2576,51 @@ var requestData = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function requestData(_x, _x2) {
+  return function requestData(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
   };
 }();
 
-var createElement = function createElement(wrapper, data) {
+var createElement = function createElement(wrapper, data, type) {
   var element = document.createElement('div');
   element.classList.add('card');
-  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"card__cartIcon\" </span> </a>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
-  element.addEventListener('click', function () {
-    console.log(data.id);
-  });
+  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          <span class=\"card__titleContent\">").concat(data.name, "</span> \n          <span class=\"card__buttonPrice\" data-price>").concat(data.prize, "<span class=\"card__cartIcon\"></span></span>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
+  var button = element.querySelector('[data-price]');
+
+  var orderProduct = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var token;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              token = localStorage.getItem('auth');
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/orders"), {
+                type: type,
+                name: data.name
+              }, {
+                headers: {
+                  Authorization: token
+                }
+              }).then(function (response) {
+                return console.log(response);
+              });
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function orderProduct() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  button.addEventListener('click', orderProduct);
   wrapper.appendChild(element);
 };
 
@@ -2542,11 +2640,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/fetchAll.js */ "./src/js/components/fetchAll.js");
 /* harmony import */ var _components_authorize_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/authorize.js */ "./src/js/components/authorize.js");
 /* harmony import */ var _components_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/hamburgerToggle.js */ "./src/js/components/hamburgerToggle.js");
+/* harmony import */ var _components_handleCart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/handleCart.js */ "./src/js/components/handleCart.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -2568,6 +2668,7 @@ var core = /*#__PURE__*/function () {
             (0,_components_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__.hamburgerToggle)();
 
             if (isAuthorized) {
+              (0,_components_handleCart_js__WEBPACK_IMPORTED_MODULE_5__.handleCart)();
               (0,_components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
               (0,_components_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
             }

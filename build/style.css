@@ -42,11 +42,12 @@
  */
 .fa,
 .fas,
+.card__cartIcon,
+.header__ordersButtonIcon,
 .far,
 .fal,
 .fad,
-.fab,
-.card__cardIcon {
+.fab {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -56,7 +57,7 @@
   line-height: 1;
 }
 
-.card__cardIcon {
+.card__cartIcon, .header__ordersButtonIcon {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: inline-block;
@@ -158,18 +159,20 @@
 
 .fa.fa-pull-left,
 .fas.fa-pull-left,
+.fa-pull-left.card__cartIcon,
+.fa-pull-left.header__ordersButtonIcon,
 .far.fa-pull-left,
 .fal.fa-pull-left,
-.fab.fa-pull-left,
-.fa-pull-left.card__cardIcon {
+.fab.fa-pull-left {
   margin-right: 0.3em;
 }
 .fa.fa-pull-right,
 .fas.fa-pull-right,
+.fa-pull-right.card__cartIcon,
+.fa-pull-right.header__ordersButtonIcon,
 .far.fa-pull-right,
 .fal.fa-pull-right,
-.fab.fa-pull-right,
-.fa-pull-right.card__cardIcon {
+.fab.fa-pull-right {
   margin-left: 0.3em;
 }
 
@@ -6135,7 +6138,9 @@ readers do not read off random characters that represent icons */
   src: url("/static/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("/static/webfonts/fa-solid-900.woff2") format("woff2"), url("/static/webfonts/fa-solid-900.woff") format("woff"), url("/static/webfonts/fa-solid-900.ttf") format("truetype"), url("/static/webfonts/fa-solid-900.svg#fontawesome") format("svg");
 }
 .fa,
-.fas {
+.fas,
+.card__cartIcon,
+.header__ordersButtonIcon {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
@@ -6152,7 +6157,7 @@ readers do not read off random characters that represent icons */
   src: url("/static/webfonts/fa-brands-400.eot");
   src: url("/static/webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("/static/webfonts/fa-brands-400.woff2") format("woff2"), url("/static/webfonts/fa-brands-400.woff") format("woff"), url("/static/webfonts/fa-brands-400.ttf") format("truetype"), url("/static/webfonts/fa-brands-400.svg#fontawesome") format("svg");
 }
-.fab, .card__cardIcon {
+.fab {
   font-family: "Font Awesome 5 Brands";
   font-weight: 400;
 }
@@ -7265,9 +7270,13 @@ body {
   background-color: #FBCA71;
   z-index: 100;
 }
+.header__spacer {
+  flex: 1;
+}
 .header__inner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 70px;
 }
 .header__logo {
@@ -7371,6 +7380,29 @@ body {
   border-bottom: 3px solid;
   font-weight: 600;
 }
+.header__ordersButton {
+  height: 40px;
+  padding: 0 30px;
+  border-radius: 10px;
+  background-color: #2A2E31;
+  color: #ffffff;
+  font-weight: 600;
+  transition: 0.2s;
+  margin-left: 20px;
+}
+.header__ordersButton:hover {
+  background-color: #ffffff;
+  color: #2A2E31;
+}
+@media (max-width: 1024px) {
+  .header__ordersButton {
+    margin-right: 20px;
+    margin-left: 0;
+  }
+}
+.header__ordersButtonIcon:after {
+  content: "\f07a";
+}
 
 .footer {
   background-color: #2A2E31;
@@ -7441,7 +7473,7 @@ body {
   }
 }
 .hero__image {
-  background-image: url("/images/contemporary-rustic-restaurant.jpeg");
+  background-image: url("/static/images/contemporary-rustic-restaurant.jpeg");
   background-position: center;
   background-size: cover;
   height: 100%;
@@ -7672,10 +7704,29 @@ body {
   max-height: 180px;
 }
 .card__title {
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
   font-size: 1.7rem;
   font-weight: 700;
 }
-.card__cardIcon:before {
-  content: "\f099";
+.card__buttonPrice {
+  background-color: #2A2E31;
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  transition: 0.2s;
+}
+.card__buttonPrice:hover {
+  cursor: pointer;
+  background-color: #FBCA71;
+  color: #2A2E31;
+}
+.card__buttonPrice--added {
+  color: #ffffff;
+  background-color: green;
+}
+.card__cartIcon:after {
+  content: "\f217";
 }

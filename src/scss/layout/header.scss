@@ -8,9 +8,14 @@
   background-color: $cMain;
   z-index: 100;
 
+  &__spacer {
+    flex: 1;
+  }
+
   &__inner {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 70px;
   }
 
@@ -142,6 +147,36 @@
     &--active {
       border-bottom: 3px solid;
       font-weight: 600;
+    }
+  }
+
+  &__ordersButton {
+    height: 40px;
+    padding: 0 30px;
+    border-radius: 10px;
+    background-color: $cSec;
+    color: $cWhite;
+    font-weight: 600;
+    transition: .2s;
+    margin-left: 20px;
+
+    &:hover {
+      background-color: $cWhite;
+      color: $cSec;
+    }
+
+    @include rwd ('large-tablet') {
+      margin-right: 20px;
+      margin-left: 0;
+    }
+  }
+
+  &__ordersButtonIcon {
+    @extend %fa-icon;
+    @extend .fas;
+
+    &:after {
+      content: fa-content($fa-var-shopping-cart);
     }
   }
 }

@@ -15,17 +15,39 @@
   }
 
   &__title {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
     font-size: 1.7rem;
     font-weight: 700;
   }
 
-  &__cardIcon {
-    @extend %fa-icon;
-    @extend .fab;
+  &__buttonPrice {
+    background-color: $cSec;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: $cWhite;
+    transition: .2s;
 
-    &:before {
-      content: fa-content($fa-var-twitter);
+    &:hover {
+      cursor: pointer;
+      background-color: $cMain;
+      color: $cSec;
+    }
+
+    &--added {
+      color: $cWhite;
+      background-color: green;
+    }
+  }
+
+  &__cartIcon {
+    @extend %fa-icon;
+    @extend .fas;
+
+    &:after {
+      content: fa-content($fa-var-cart-plus);
     }
   }
 }
