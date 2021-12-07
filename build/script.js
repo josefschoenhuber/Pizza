@@ -2289,16 +2289,16 @@ var hamburgerToggle = function hamburgerToggle() {
 
 /***/ }),
 
-/***/ "./src/js/components/handleCart.js":
-/*!*****************************************!*\
-  !*** ./src/js/components/handleCart.js ***!
-  \*****************************************/
+/***/ "./src/js/components/handleOrders.js":
+/*!*******************************************!*\
+  !*** ./src/js/components/handleOrders.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "handleCart": () => (/* binding */ handleCart)
+/* harmony export */   "handleOrders": () => (/* binding */ handleOrders)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -2313,16 +2313,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var handleCart = /*#__PURE__*/function () {
+var handleOrders = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var token, wrapper, cart;
+    var token, wrapper, results;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             token = localStorage.getItem('auth');
-            wrapper = document.querySelector('[data-cart-token]');
-            _context.next = 4;
+            wrapper = document.querySelector('[data-orders]');
+
+            if (wrapper) {
+              _context.next = 4;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 4:
+            _context.next = 6;
             return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/orders"), {
               headers: {
                 Authorization: token
@@ -2333,10 +2342,23 @@ var handleCart = /*#__PURE__*/function () {
               return console.log(error);
             });
 
-          case 4:
-            cart = _context.sent;
+          case 6:
+            results = _context.sent;
 
-          case 5:
+            if (results) {
+              _context.next = 9;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 9:
+            wrapper.innerHTML = "";
+            results.forEach(function (result, index) {
+              return createElement(wrapper, result, index);
+            });
+
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -2344,10 +2366,21 @@ var handleCart = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function handleCart() {
+  return function handleOrders() {
     return _ref.apply(this, arguments);
   };
 }();
+
+var createElement = function createElement(wrapper, data, index) {
+  var element = document.createElement('div');
+  element.classList.add('card');
+  var icon = '';
+  if (data.type === 'pizza') icon = '🍕';
+  if (data.type === 'salad') icon = '🥗';
+  if (data.type === 'softdrink') icon = '🥤';
+  element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding card__content--row\" >\n      <div class=\"card__number\">#".concat(++index, "</div> \n      <div class=\"card__name\">").concat(data.name, "</div> \n      <div class=\"card__type\">").concat(icon, "</div>\n    </div>\n  ");
+  wrapper.prepend(element);
+};
 
 /***/ }),
 
@@ -2640,7 +2673,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/fetchAll.js */ "./src/js/components/fetchAll.js");
 /* harmony import */ var _components_authorize_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/authorize.js */ "./src/js/components/authorize.js");
 /* harmony import */ var _components_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/hamburgerToggle.js */ "./src/js/components/hamburgerToggle.js");
-/* harmony import */ var _components_handleCart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/handleCart.js */ "./src/js/components/handleCart.js");
+/* harmony import */ var _components_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/handleOrders.js */ "./src/js/components/handleOrders.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2668,7 +2701,7 @@ var core = /*#__PURE__*/function () {
             (0,_components_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__.hamburgerToggle)();
 
             if (isAuthorized) {
-              (0,_components_handleCart_js__WEBPACK_IMPORTED_MODULE_5__.handleCart)();
+              (0,_components_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__.handleOrders)();
               (0,_components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
               (0,_components_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
             }

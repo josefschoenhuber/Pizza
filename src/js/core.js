@@ -2,7 +2,7 @@ import { onSubmitFeedback } from "./components/onSubmitFeedback.js";
 import { fetchAll } from "./components/fetchAll.js";
 import { authorize } from "./components/authorize.js";
 import { hamburgerToggle } from "./components/hamburgerToggle.js";
-import { handleCart } from "./components/handleCart.js";
+import { handleOrders } from "./components/handleOrders.js";
 
 const core = async () => {
   const isAuthorized = await authorize();
@@ -10,7 +10,7 @@ const core = async () => {
   hamburgerToggle();
 
   if (isAuthorized) {
-    handleCart();
+    handleOrders();
     fetchAll();
     onSubmitFeedback();
   }

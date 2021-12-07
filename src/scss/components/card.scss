@@ -5,7 +5,21 @@
   overflow: hidden;
 
   &__content {
-    padding: 15px;
+    padding: 20px;
+
+    &--biggerPadding {
+      padding: 35px;
+    }
+
+    &--row {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+
+      @include rwd ('large-phone') {
+        flex-direction: column;
+      }
+    }
   }
 
   &__image {
@@ -35,11 +49,6 @@
       background-color: $cMain;
       color: $cSec;
     }
-
-    &--added {
-      color: $cWhite;
-      background-color: green;
-    }
   }
 
   &__cartIcon {
@@ -48,6 +57,33 @@
 
     &:after {
       content: fa-content($fa-var-cart-plus);
+    }
+  }
+
+  &__number {
+    font-size: 5rem;
+    font-weight: 700;
+
+    @include rwd ('large-phone') {
+      font-size: 3rem;
+    }
+  }
+
+  &__name {
+    flex: 1;
+    font-size: 1.8rem;
+
+    @include rwd ('large-phone') {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  &__type {
+    font-size: 5rem;
+
+    @include rwd ('large-phone') {
+      font-size: 4rem;
     }
   }
 }
