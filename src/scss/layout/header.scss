@@ -39,7 +39,7 @@
   &__menu {
     display: flex;
     max-height: 100%;
-    
+
     @include rwd('tablet') {
       display: none;
     }
@@ -153,7 +153,6 @@
 
   &__ordersButton {
     height: 40px;
-    padding: 0 30px;
     border-radius: 10px;
     background-color: $cSec;
     color: $cWhite;
@@ -170,6 +169,13 @@
       margin-right: 20px;
       margin-left: 0;
     }
+  }
+
+  &__ordersButtonLink {
+    display: block;
+    height: 100%;
+    line-height: 40px;
+    padding: 0 30px;
   }
 
   &__ordersButtonIcon {

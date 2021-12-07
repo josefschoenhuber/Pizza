@@ -7401,7 +7401,6 @@ body {
 }
 .header__ordersButton {
   height: 40px;
-  padding: 0 30px;
   border-radius: 10px;
   background-color: #2A2E31;
   color: #ffffff;
@@ -7418,6 +7417,12 @@ body {
     margin-right: 20px;
     margin-left: 0;
   }
+}
+.header__ordersButtonLink {
+  display: block;
+  height: 100%;
+  line-height: 40px;
+  padding: 0 30px;
 }
 .header__ordersButtonIcon:after {
   content: "\f07a";
