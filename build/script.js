@@ -2519,7 +2519,7 @@ var requestData = /*#__PURE__*/function () {
 var createElement = function createElement(wrapper, data) {
   var element = document.createElement('div');
   element.classList.add('card');
-  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
+  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"card__cartIcon\" </span> </a>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
   });

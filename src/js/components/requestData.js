@@ -33,7 +33,7 @@ const createElement = (wrapper, data) => {
       </div>
       <div class="card__content">
         <h2 class="card__title">
-          ${data.name} ${data.prize} <a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a>
+          ${data.name} ${data.prize} <a href="#"> <span class="card__cartIcon" </span> </a>
         </h2>
         <h8  class="card__description">${data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume}</h8>
       </div>

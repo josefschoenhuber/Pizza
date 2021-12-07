@@ -19,4 +19,13 @@
     font-size: 1.7rem;
     font-weight: 700;
   }
+
+  &__cardIcon {
+    @extend %fa-icon;
+    @extend .fab;
+
+    &:before {
+      content: fa-content($fa-var-twitter);
+    }
+  }
 }
