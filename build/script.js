@@ -2240,298 +2240,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchAll": () => (/* binding */ fetchAll)
 /* harmony export */ });
-/* harmony import */ var _getPizzas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getPizzas */ "./src/js/components/getPizzas.js");
-/* harmony import */ var _getSalads__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getSalads */ "./src/js/components/getSalads.js");
-/* harmony import */ var _getSoftDrinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getSoftDrinks */ "./src/js/components/getSoftDrinks.js");
-
-
+/* harmony import */ var _requestData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./requestData */ "./src/js/components/requestData.js");
 
 var fetchAll = function fetchAll() {
-  (0,_getPizzas__WEBPACK_IMPORTED_MODULE_0__.getPizzas)();
-  (0,_getSalads__WEBPACK_IMPORTED_MODULE_1__.getSalads)();
-  (0,_getSoftDrinks__WEBPACK_IMPORTED_MODULE_2__.getSoftDrinks)();
-};
-
-/***/ }),
-
-/***/ "./src/js/components/getPizzas.js":
-/*!****************************************!*\
-  !*** ./src/js/components/getPizzas.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getPizzas": () => (/* binding */ getPizzas)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-var getPizzas = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var token, wrapper, results;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            token = localStorage.getItem('auth');
-            wrapper = document.querySelector('[data-pizza]');
-
-            if (!(!wrapper || !token)) {
-              _context.next = 4;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 4:
-            _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/pizzas"), {
-              headers: {
-                Authorization: token
-              }
-            }).then(function (response) {
-              return response.data;
-            })["catch"](function (error) {
-              return console.log(error);
-            });
-
-          case 6:
-            results = _context.sent;
-
-            if (results) {
-              _context.next = 9;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 9:
-            wrapper.innerHTML = "";
-            results.forEach(function (result) {
-              return createElement(wrapper, result);
-            });
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getPizzas() {
-    return _ref.apply(this, arguments);
+  var selectors = {
+    pizza: {
+      wrapper: document.querySelector('[data-pizza]'),
+      endpoint: 'pizzas'
+    },
+    salad: {
+      wrapper: document.querySelector('[data-salad]'),
+      endpoint: 'salads'
+    },
+    drink: {
+      wrapper: document.querySelector('[data-soft-drinks]'),
+      endpoint: 'softdrinks'
+    }
   };
-}();
-
-var createElement = function createElement(wrapper, data) {
-  var element = document.createElement('div');
-  element.classList.add('card');
-  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.ingredients.join(', '), "</h8>\n      </div>\n    </div>\n  ");
-  element.addEventListener('click', function () {
-    console.log(data.id);
-  });
-  wrapper.appendChild(element);
-};
-
-/***/ }),
-
-/***/ "./src/js/components/getSalads.js":
-/*!****************************************!*\
-  !*** ./src/js/components/getSalads.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getSalads": () => (/* binding */ getSalads)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-var getSalads = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var token, wrapper, results;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            token = localStorage.getItem('auth');
-            wrapper = document.querySelector('[data-salad]');
-
-            if (!(!wrapper || !token)) {
-              _context.next = 4;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 4:
-            _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/salads"), {
-              headers: {
-                Authorization: token
-              }
-            }).then(function (response) {
-              return response.data;
-            })["catch"](function (error) {
-              return console.log(error);
-            });
-
-          case 6:
-            results = _context.sent;
-
-            if (results) {
-              _context.next = 9;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 9:
-            wrapper.innerHTML = "";
-            results.forEach(function (result) {
-              return createElement(wrapper, result);
-            });
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getSalads() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var createElement = function createElement(wrapper, data) {
-  var element = document.createElement('div');
-  element.classList.add('card');
-  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.ingredients.join(', '), "</h8>\n      </div>\n    </div>\n  ");
-  element.addEventListener('click', function () {
-    console.log(data.id);
-  });
-  wrapper.appendChild(element);
-};
-
-/***/ }),
-
-/***/ "./src/js/components/getSoftDrinks.js":
-/*!********************************************!*\
-  !*** ./src/js/components/getSoftDrinks.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getSoftDrinks": () => (/* binding */ getSoftDrinks)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-var getSoftDrinks = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var token, wrapper, results;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            token = localStorage.getItem('auth');
-            wrapper = document.querySelector('[data-soft-drinks]');
-
-            if (!(!wrapper || !token)) {
-              _context.next = 4;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 4:
-            _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/softdrinks"), {
-              headers: {
-                Authorization: token
-              }
-            }).then(function (response) {
-              return response.data;
-            })["catch"](function (error) {
-              return console.log(error);
-            });
-
-          case 6:
-            results = _context.sent;
-
-            if (results) {
-              _context.next = 9;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 9:
-            wrapper.innerHTML = "";
-            results.forEach(function (result) {
-              return createElement(wrapper, result);
-            });
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getSoftDrinks() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var createElement = function createElement(wrapper, data) {
-  var element = document.createElement('div');
-  element.classList.add('card');
-  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a>\n        </h2>\n        <h8>volume: ").concat(data.volume, "</h8>\n      </div>\n    </div>\n  ");
-  element.addEventListener('click', function () {
-    console.log(data.id);
-  });
-  wrapper.appendChild(element);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.pizza.wrapper, selectors.pizza.endpoint);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.salad.wrapper, selectors.salad.endpoint);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.drink.wrapper, selectors.drink.endpoint);
 };
 
 /***/ }),
@@ -2703,6 +2431,99 @@ var onSubmitFeedback = function onSubmitFeedback() {
   };
 
   setEvents();
+};
+
+/***/ }),
+
+/***/ "./src/js/components/requestData.js":
+/*!******************************************!*\
+  !*** ./src/js/components/requestData.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "requestData": () => (/* binding */ requestData)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var requestData = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(wrapper, endpoint) {
+    var token, results;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            token = localStorage.getItem('auth');
+
+            if (!(!wrapper || !token)) {
+              _context.next = 3;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 3:
+            _context.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/").concat(endpoint), {
+              headers: {
+                Authorization: token
+              }
+            }).then(function (response) {
+              return response.data;
+            })["catch"](function (error) {
+              return console.log(error);
+            });
+
+          case 5:
+            results = _context.sent;
+
+            if (results) {
+              _context.next = 8;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 8:
+            wrapper.innerHTML = "";
+            results.forEach(function (result) {
+              return createElement(wrapper, result);
+            });
+
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function requestData(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var createElement = function createElement(wrapper, data) {
+  var element = document.createElement('div');
+  element.classList.add('card');
+  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          ").concat(data.name, " ").concat(data.prize, " <a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
+  element.addEventListener('click', function () {
+    console.log(data.id);
+  });
+  wrapper.appendChild(element);
 };
 
 /***/ }),

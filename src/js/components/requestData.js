@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { API_URL } from '../settings/constants';
 
-export const getSoftDrinks = async () => {
+export const requestData = async (wrapper, endpoint) => {
   const token = localStorage.getItem('auth');
-  const wrapper = document.querySelector('[data-soft-drinks]');
 
   if (!wrapper || !token) return;
 
   const results = await axios
-    .get(`${API_URL}/softdrinks`, {
+    .get(`${API_URL}/${endpoint}`, {
       headers: {
         Authorization: token,
       }
@@ -36,11 +35,10 @@ const createElement = (wrapper, data) => {
         <h2 class="card__title">
           ${data.name} ${data.prize} <a href="#"> <span class="glyphicon glyphicon-shopping-cart" </span> </a>
         </h2>
-        <h8>volume: ${data.volume}</h8>
+        <h8  class="card__description">${data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume}</h8>
       </div>
     </div>
   `;
-
   element.addEventListener('click', () => {
     console.log(data.id);
   })
