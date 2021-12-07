@@ -16,6 +16,13 @@ body {
   font-size: 1.5rem;
 }
 
+.error {
+  display: block;
+  color: $cError;
+  // margin-bottom: 20px;
+  line-height: 2;
+}
+
 .grid {
   position: relative;
   display: grid;

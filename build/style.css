@@ -279,6 +279,12 @@ body {
   font-size: 1.5rem;
 }
 
+.error {
+  display: block;
+  color: #F23F00;
+  line-height: 2;
+}
+
 .grid {
   position: relative;
   display: grid;
@@ -1254,6 +1260,12 @@ body {
   display: flex;
   gap: 40px;
 }
+@media (max-width: 768px) {
+  .footer__columns {
+    flex-direction: column;
+    text-align: center;
+  }
+}
 .footer__column {
   flex: 1;
   font-weight: 400;
@@ -1265,13 +1277,262 @@ body {
 }
 .footer__quote {
   flex: 3;
-  text-align: center;
-  max-width: 400px;
   margin: auto;
   margin-bottom: 30px;
+  max-width: 400px;
+  text-align: center;
 }
 .footer__quoteAuthor {
   font-weight: 600;
+}
+
+.hero {
+  height: 40vh;
+  position: relative;
+}
+.hero__container {
+  height: 100%;
+}
+.hero__title {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: 0 50px;
+  position: relative;
+  text-align: center;
+  width: 50%;
+  z-index: 10;
+}
+@media (max-width: 1024px) {
+  .hero__title {
+    width: 100%;
+  }
+}
+.hero__titleText {
+  font-size: 5rem;
+  font-weight: 700;
+}
+@media (max-width: 1024px) {
+  .hero__titleText {
+    color: #ffffff;
+    font-size: 4rem;
+  }
+}
+.hero__image {
+  background-image: url("/images/contemporary-rustic-restaurant.jpeg");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .hero__image {
+    width: 100%;
+  }
+  .hero__image:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.categories {
+  padding: 50px 0;
+}
+.categories__title {
+  display: flex;
+  justify-content: center;
+}
+.categories__titleText {
+  align-items: center;
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.categories__titleText:before, .categories__titleText:after {
+  background-color: #2A2E31;
+  content: "";
+  display: block;
+  height: 3px;
+  margin: 0 10px;
+  width: 30px;
+}
+.categories__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin: 50px 0;
+}
+.categories__link {
+  flex: 1;
+  min-width: 200px;
+}
+
+.feedback {
+  padding: 50px 0;
+}
+.feedback__titleText {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.feedback__inner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.feedback__form {
+  min-width: 600px;
+}
+@media (max-width: 1024px) {
+  .feedback__form {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+.feedback__inputBox {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.feedback__inputBox--last {
+  margin-bottom: 30px;
+}
+.feedback__inputRow {
+  display: flex;
+  gap: 10px;
+}
+@media (max-width: 600px) {
+  .feedback__inputRow {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+.feedback__input, .feedback__textarea {
+  border: 2px solid #2A2E31;
+  border-radius: 10px;
+  flex: 1;
+  height: 50px;
+  padding: 10px;
+  transition: 0.2s;
+}
+.feedback__input:focus-visible, .feedback__textarea:focus-visible {
+  border-color: #FBCA71;
+}
+.feedback__textarea {
+  resize: vertical;
+  height: 70px;
+  margin-bottom: 30px;
+}
+.feedback__button {
+  padding: 0 50px;
+  background-color: #2A2E31;
+  height: 50px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.feedback__button:hover {
+  background-color: #FBCA71;
+  color: #2A2E31;
+}
+@media (max-width: 480px) {
+  .feedback__button {
+    width: 100%;
+  }
+}
+.feedback__radio:checked, .feedback__radio:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+.feedback__radio:checked + label, .feedback__radio:not(:checked) + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #2A2E31;
+}
+.feedback__radio:checked + label:before, .feedback__radio:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(42, 46, 49, 0.4);
+  border-radius: 100%;
+  background: #ffffff;
+}
+.feedback__radio:checked + label:after, .feedback__radio:not(:checked) + label:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #FBCA71;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+.feedback__radio:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+.feedback__radio:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+.feedback__radios {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.feedback__title {
+  margin: 20px 0;
+}
+.feedback__select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  flex: 1;
+  padding: 0 1em;
+  color: #ffffff;
+  background-color: #2A2E31;
+  font-weight: 600;
+  background-image: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.feedback__select::-ms-expand {
+  display: none;
+}
+.feedback__select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  max-width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .card {

@@ -86,11 +86,9 @@ export const onSubmitFeedback = () => {
 
         const arePasswordsEqual = () => {
             if (fields.password.value == fields.passwordCheck.value) {
-                fields.password.className = 'placeholderRed';
-                fields.passwordCheck.className = 'placeholderRed';
-                return true;
+                return '';
             }
-            return false
+            return 'The passwords are not equal'
         }
 
     const isValid = () =>{

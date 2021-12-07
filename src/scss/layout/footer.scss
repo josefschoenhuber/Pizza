@@ -6,6 +6,11 @@
   &__columns {
     display: flex;
     gap: 40px;
+
+    @include rwd ('tablet') {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   &__column {
@@ -21,10 +26,10 @@
 
   &__quote {
     flex: 3;
-    text-align: center;
-    max-width: 400px;
     margin: auto;
     margin-bottom: 30px;
+    max-width: 400px;
+    text-align: center;
   }
 
   &__quoteAuthor {
