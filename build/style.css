@@ -7717,6 +7717,10 @@ body {
   background-color: #ffffff;
   box-shadow: 0px 7px 19px 1px rgba(0, 0, 0, 0.06);
   overflow: hidden;
+  transition: 0.2s;
+}
+.card--clickable:hover {
+  transform: scale(1.05);
 }
 .card__content {
   padding: 20px;

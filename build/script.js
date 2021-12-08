@@ -2158,10 +2158,74 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./src/js/components/authorize.js":
-/*!****************************************!*\
-  !*** ./src/js/components/authorize.js ***!
-  \****************************************/
+/***/ "./src/js/core.js":
+/*!************************!*\
+  !*** ./src/js/core.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _functions_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/onSubmitFeedback.js */ "./src/js/functions/onSubmitFeedback.js");
+/* harmony import */ var _functions_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./functions/fetchAll.js */ "./src/js/functions/fetchAll.js");
+/* harmony import */ var _functions_authorize_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./functions/authorize.js */ "./src/js/functions/authorize.js");
+/* harmony import */ var _functions_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./functions/hamburgerToggle.js */ "./src/js/functions/hamburgerToggle.js");
+/* harmony import */ var _functions_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functions/handleOrders.js */ "./src/js/functions/handleOrders.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+
+
+var core = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var isAuthorized;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0,_functions_authorize_js__WEBPACK_IMPORTED_MODULE_3__.authorize)();
+
+          case 2:
+            isAuthorized = _context.sent;
+            (0,_functions_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__.hamburgerToggle)();
+
+            if (isAuthorized) {
+              (0,_functions_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__.handleOrders)();
+              (0,_functions_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
+              (0,_functions_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
+            }
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function core() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+document.addEventListener("DOMContentLoaded", core);
+
+/***/ }),
+
+/***/ "./src/js/functions/authorize.js":
+/*!***************************************!*\
+  !*** ./src/js/functions/authorize.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2229,10 +2293,10 @@ var authorize = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./src/js/components/fetchAll.js":
-/*!***************************************!*\
-  !*** ./src/js/components/fetchAll.js ***!
-  \***************************************/
+/***/ "./src/js/functions/fetchAll.js":
+/*!**************************************!*\
+  !*** ./src/js/functions/fetchAll.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2240,7 +2304,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchAll": () => (/* binding */ fetchAll)
 /* harmony export */ });
-/* harmony import */ var _requestData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./requestData */ "./src/js/components/requestData.js");
+/* harmony import */ var _requestData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./requestData */ "./src/js/functions/requestData.js");
 
 var fetchAll = function fetchAll() {
   var selectors = {
@@ -2267,10 +2331,10 @@ var fetchAll = function fetchAll() {
 
 /***/ }),
 
-/***/ "./src/js/components/hamburgerToggle.js":
-/*!**********************************************!*\
-  !*** ./src/js/components/hamburgerToggle.js ***!
-  \**********************************************/
+/***/ "./src/js/functions/hamburgerToggle.js":
+/*!*********************************************!*\
+  !*** ./src/js/functions/hamburgerToggle.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2289,10 +2353,10 @@ var hamburgerToggle = function hamburgerToggle() {
 
 /***/ }),
 
-/***/ "./src/js/components/handleOrders.js":
-/*!*******************************************!*\
-  !*** ./src/js/components/handleOrders.js ***!
-  \*******************************************/
+/***/ "./src/js/functions/handleOrders.js":
+/*!******************************************!*\
+  !*** ./src/js/functions/handleOrders.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2384,10 +2448,10 @@ var createElement = function createElement(wrapper, data, index) {
 
 /***/ }),
 
-/***/ "./src/js/components/onSubmitFeedback.js":
-/*!***********************************************!*\
-  !*** ./src/js/components/onSubmitFeedback.js ***!
-  \***********************************************/
+/***/ "./src/js/functions/onSubmitFeedback.js":
+/*!**********************************************!*\
+  !*** ./src/js/functions/onSubmitFeedback.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2533,10 +2597,10 @@ var onSubmitFeedback = function onSubmitFeedback() {
 
 /***/ }),
 
-/***/ "./src/js/components/requestData.js":
-/*!******************************************!*\
-  !*** ./src/js/components/requestData.js ***!
-  \******************************************/
+/***/ "./src/js/functions/requestData.js":
+/*!*****************************************!*\
+  !*** ./src/js/functions/requestData.js ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2656,70 +2720,6 @@ var createElement = function createElement(wrapper, data, type) {
   button.addEventListener('click', orderProduct);
   wrapper.appendChild(element);
 };
-
-/***/ }),
-
-/***/ "./src/js/core.js":
-/*!************************!*\
-  !*** ./src/js/core.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/onSubmitFeedback.js */ "./src/js/components/onSubmitFeedback.js");
-/* harmony import */ var _components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/fetchAll.js */ "./src/js/components/fetchAll.js");
-/* harmony import */ var _components_authorize_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/authorize.js */ "./src/js/components/authorize.js");
-/* harmony import */ var _components_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/hamburgerToggle.js */ "./src/js/components/hamburgerToggle.js");
-/* harmony import */ var _components_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/handleOrders.js */ "./src/js/components/handleOrders.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-
-
-
-
-var core = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var isAuthorized;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return (0,_components_authorize_js__WEBPACK_IMPORTED_MODULE_3__.authorize)();
-
-          case 2:
-            isAuthorized = _context.sent;
-            (0,_components_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__.hamburgerToggle)();
-
-            if (isAuthorized) {
-              (0,_components_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__.handleOrders)();
-              (0,_components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
-              (0,_components_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
-            }
-
-          case 5:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function core() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-document.addEventListener("DOMContentLoaded", core);
 
 /***/ }),
 

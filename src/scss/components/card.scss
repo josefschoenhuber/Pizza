@@ -3,6 +3,11 @@
   background-color: $cWhite;
   box-shadow: $cShadow;
   overflow: hidden;
+  transition: .2s;
+
+  &--clickable:hover {
+    transform: scale(1.05);
+  }
 
   &__content {
     padding: 20px;
