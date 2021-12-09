@@ -109,16 +109,6 @@ export const onSubmitFeedback = () => {
     return valid;
   }
 
-  function addFeedback(event) {
-    event.preventDefault();
-
-    if (isValid()) {
-
-    } else {
-      alert("There was an error")
-    }
-  }
-
   const checkFill = () => {
     if (!fields.firstName.value) return;
     if (!fields.lastName.value) return;
@@ -133,6 +123,14 @@ export const onSubmitFeedback = () => {
     if (checkRadios(fields.pricing)) return;
 
     button.classList.remove('disabled');
+  }
+
+  const addFeedback = (event) => {
+    event.preventDefault();
+
+    if (isValid()) {
+      
+    }
   }
 
   const setEvents = () => {

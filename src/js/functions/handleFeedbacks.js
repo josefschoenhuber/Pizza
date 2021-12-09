@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { API_URL } from '../settings/constants';
 
-export const handleOrders = async () => {
+export const handleFeedbacks = async () => {
   const token = localStorage.getItem('auth');
-  const wrapper = document.querySelector('[data-orders]');
+  const wrapper = document.querySelector('[data-feedbacks]');
 
   if (!wrapper) return;
 
   const results = await axios
-    .get(`${API_URL}/orders`, {
+    .get(`${API_URL}/feedbacks`, {
       headers: {
         Authorization: token,
       }

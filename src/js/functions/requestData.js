@@ -35,7 +35,7 @@ const createElement = (wrapper, data, type) => {
       <div class="card__content">
         <h2 class="card__title">
           <span class="card__titleContent">${data.name}</span> 
-          <span class="card__buttonPrice" data-price>${data.prize}<span class="card__cartIcon"></span></span>
+          <span class="card__buttonPrice" data-price>${data.prize}<span class="card__cartIcon"></span><span class="card__buttonTooltip">ordered!</span></span>
         </h2>
         <h8  class="card__description">${data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume}</h8>
       </div>
@@ -55,7 +55,14 @@ const createElement = (wrapper, data, type) => {
           Authorization: token,
         },
       })
-      .then(response => console.log(response))
+      .then(() => {
+        const tooltip = button.querySelector('.card__buttonTooltip');
+
+        if (!tooltip.classList.contains('card__buttonTooltip--visible')) {
+          tooltip.classList.add('card__buttonTooltip--visible');
+          setTimeout(() => tooltip.classList.remove('card__buttonTooltip--visible'), 1000)
+        }
+      })
   }
 
   button.addEventListener('click', orderProduct);

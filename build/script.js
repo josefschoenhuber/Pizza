@@ -2173,11 +2173,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions_authorize_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./functions/authorize.js */ "./src/js/functions/authorize.js");
 /* harmony import */ var _functions_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./functions/hamburgerToggle.js */ "./src/js/functions/hamburgerToggle.js");
 /* harmony import */ var _functions_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functions/handleOrders.js */ "./src/js/functions/handleOrders.js");
+/* harmony import */ var _functions_handleFeedbacks_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./functions/handleFeedbacks.js */ "./src/js/functions/handleFeedbacks.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -2200,6 +2202,7 @@ var core = /*#__PURE__*/function () {
             (0,_functions_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__.hamburgerToggle)();
 
             if (isAuthorized) {
+              (0,_functions_handleFeedbacks_js__WEBPACK_IMPORTED_MODULE_6__.handleFeedbacks)();
               (0,_functions_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__.handleOrders)();
               (0,_functions_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
               (0,_functions_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
@@ -2349,6 +2352,101 @@ var hamburgerToggle = function hamburgerToggle() {
   button.addEventListener('click', function () {
     wrapper.classList.toggle('header__hamburger--active');
   });
+};
+
+/***/ }),
+
+/***/ "./src/js/functions/handleFeedbacks.js":
+/*!*********************************************!*\
+  !*** ./src/js/functions/handleFeedbacks.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "handleFeedbacks": () => (/* binding */ handleFeedbacks)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var handleFeedbacks = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var token, wrapper, results;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            token = localStorage.getItem('auth');
+            wrapper = document.querySelector('[data-feedbacks]');
+
+            if (wrapper) {
+              _context.next = 4;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 4:
+            _context.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/feedbacks"), {
+              headers: {
+                Authorization: token
+              }
+            }).then(function (response) {
+              return response.data;
+            })["catch"](function (error) {
+              return console.log(error);
+            });
+
+          case 6:
+            results = _context.sent;
+
+            if (results) {
+              _context.next = 9;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 9:
+            wrapper.innerHTML = "";
+            results.forEach(function (result, index) {
+              return createElement(wrapper, result, index);
+            });
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function handleFeedbacks() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var createElement = function createElement(wrapper, data, index) {
+  var element = document.createElement('div');
+  element.classList.add('card');
+  var icon = '';
+  if (data.type === 'pizza') icon = '🍕';
+  if (data.type === 'salad') icon = '🥗';
+  if (data.type === 'softdrink') icon = '🥤';
+  element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding card__content--row\" >\n      <div class=\"card__number\">#".concat(++index, "</div> \n      <div class=\"card__name\">").concat(data.name, "</div> \n      <div class=\"card__type\">").concat(icon, "</div>\n    </div>\n  ");
+  wrapper.prepend(element);
 };
 
 /***/ }),
@@ -2565,14 +2663,6 @@ var onSubmitFeedback = function onSubmitFeedback() {
     return valid;
   };
 
-  function addFeedback(event) {
-    event.preventDefault();
-
-    if (isValid()) {} else {
-      alert("There was an error");
-    }
-  }
-
   var checkFill = function checkFill() {
     if (!fields.firstName.value) return;
     if (!fields.lastName.value) return;
@@ -2585,6 +2675,12 @@ var onSubmitFeedback = function onSubmitFeedback() {
     if (checkRadios(fields.rating)) return;
     if (checkRadios(fields.pricing)) return;
     button.classList.remove('disabled');
+  };
+
+  var addFeedback = function addFeedback(event) {
+    event.preventDefault();
+
+    if (isValid()) {}
   };
 
   var setEvents = function setEvents() {
@@ -2681,7 +2777,7 @@ var requestData = /*#__PURE__*/function () {
 var createElement = function createElement(wrapper, data, type) {
   var element = document.createElement('div');
   element.classList.add('card');
-  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          <span class=\"card__titleContent\">").concat(data.name, "</span> \n          <span class=\"card__buttonPrice\" data-price>").concat(data.prize, "<span class=\"card__cartIcon\"></span></span>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
+  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          <span class=\"card__titleContent\">").concat(data.name, "</span> \n          <span class=\"card__buttonPrice\" data-price>").concat(data.prize, "<span class=\"card__cartIcon\"></span><span class=\"card__buttonTooltip\">ordered!</span></span>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
   var button = element.querySelector('[data-price]');
 
   var orderProduct = /*#__PURE__*/function () {
@@ -2700,8 +2796,15 @@ var createElement = function createElement(wrapper, data, type) {
                 headers: {
                   Authorization: token
                 }
-              }).then(function (response) {
-                return console.log(response);
+              }).then(function () {
+                var tooltip = button.querySelector('.card__buttonTooltip');
+
+                if (!tooltip.classList.contains('card__buttonTooltip--visible')) {
+                  tooltip.classList.add('card__buttonTooltip--visible');
+                  setTimeout(function () {
+                    return tooltip.classList.remove('card__buttonTooltip--visible');
+                  }, 1000);
+                }
               });
 
             case 3:
