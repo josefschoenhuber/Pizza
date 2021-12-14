@@ -1,31 +1,30 @@
 import axios from 'axios';
+import { API_URL } from '../settings/constants';
+import { handleFeedbacks } from './handleFeedbacks';
 
-export const sendFeedback = ({
-  pizzaRating,
-  prizeRating,
-  name,
-  email,
-  feedback,
-}) => {
+export const sendFeedback = async (data) => {
   const token = localStorage.getItem('auth');
 
-  await axios.post(`${API_URL}/orders`, {
-      pizzaRating,
-      prizeRating,
-      name,
-      email,
-      feedback,
+  const {
+    pizzaRating,
+    prizeRating,
+    name,
+    email,
+    feedback
+  } = data;
+
+  await axios.post(`${API_URL}/feedback`, {
+      pizzaRating: pizzaRating,
+      prizeRating: prizeRating,
+      name: name,
+      email: email,
+      feedback: feedback,
     }, {
       headers: {
         Authorization: token,
       },
     })
     .then(() => {
-      const tooltip = button.querySelector('.card__buttonTooltip');
-
-      if (!tooltip.classList.contains('card__buttonTooltip--visible')) {
-        tooltip.classList.add('card__buttonTooltip--visible');
-        setTimeout(() => tooltip.classList.remove('card__buttonTooltip--visible'), 1000)
-      }
+      handleFeedbacks();
     })
 }

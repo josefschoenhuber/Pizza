@@ -2345,92 +2345,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "hamburgerToggle": () => (/* binding */ hamburgerToggle)
 /* harmony export */ });
-<<<<<<< HEAD:build/core.js
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-var getPizzas = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var token, wrapper, results;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            token = localStorage.getItem('auth');
-            wrapper = document.querySelector('.pizzas');
-
-            if (!(!wrapper || !token)) {
-              _context.next = 4;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 4:
-            _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/pizzas"), {
-              headers: {
-                Authorization: token
-              }
-            }).then(function (response) {
-              return response.data;
-            })["catch"](function (error) {
-              return console.log(error);
-            });
-
-          case 6:
-            results = _context.sent;
-
-            if (results) {
-              _context.next = 9;
-              break;
-            }
-
-            return _context.abrupt("return");
-
-          case 9:
-            wrapper.innerHTML = "";
-            results.forEach(function (result) {
-              return createElement(wrapper, result);
-            });
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getPizzas() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var createElement = function createElement(wrapper, data) {
-  var element = document.createElement('div');
-  element.classList.add('pizzas__item');
-  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
-  element.addEventListener('click', function () {
-    console.log(data.id);
-=======
 var hamburgerToggle = function hamburgerToggle() {
   var wrapper = document.querySelector('.header__hamburger');
   var button = document.querySelector('.header__hamburgerIcon');
   if (!wrapper) return;
   button.addEventListener('click', function () {
     wrapper.classList.toggle('header__hamburger--active');
->>>>>>> feature/refactor:build/script.js
   });
 };
 
@@ -2520,18 +2440,9 @@ var handleFeedbacks = /*#__PURE__*/function () {
 
 var createElement = function createElement(wrapper, data, index) {
   var element = document.createElement('div');
-<<<<<<< HEAD:build/core.js
-  element.classList.add('salads__item');
-  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
-  element.addEventListener('click', function () {
-    console.log(data.id);
-  });
-  wrapper.appendChild(element);
-=======
   element.classList.add('card');
   element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding\" >\n      <div class=\"card__header\">\n        <div class=\"card__name\">".concat(data.name, "</div> \n        <a class=\"card__email\" href=\"mailto:").concat(data.email, "\">").concat(data.email, "</a> \n      </div>\n      <div class=\"card__ratings\">\n        <div class=\"card__ratingsPrice\">Price: ").concat(data.prizeRating, "</div>\n        <div class=\"card__ratingsPizza\">Pizza: ").concat(data.pizzaRating, "</div>\n      </div>\n      <div class=\"card__feedback\">").concat(data.feedback, "</div> \n    </div>\n  ");
   wrapper.prepend(element);
->>>>>>> feature/refactor:build/script.js
 };
 
 /***/ }),
@@ -2620,14 +2531,6 @@ var handleOrders = /*#__PURE__*/function () {
 
 var createElement = function createElement(wrapper, data, index) {
   var element = document.createElement('div');
-<<<<<<< HEAD:build/core.js
-  element.classList.add('softDrinks__item');
-  element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>volume: ").concat(data.volume, "</h8>\n      <br>\n    </div>\n  ");
-  element.addEventListener('click', function () {
-    console.log(data.id);
-  });
-  wrapper.appendChild(element);
-=======
   element.classList.add('card');
   var icon = '';
   if (data.type === 'pizza') icon = '🍕';
@@ -2635,7 +2538,6 @@ var createElement = function createElement(wrapper, data, index) {
   if (data.type === 'softdrink') icon = '🥤';
   element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding card__content--row\" >\n      <div class=\"card__number\">#".concat(++index, "</div> \n      <div class=\"card__name\">").concat(data.name, "</div> \n      <div class=\"card__type\">").concat(icon, "</div>\n    </div>\n  ");
   wrapper.prepend(element);
->>>>>>> feature/refactor:build/script.js
 };
 
 /***/ }),
@@ -2652,7 +2554,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "onSubmitFeedback": () => (/* binding */ onSubmitFeedback)
 /* harmony export */ });
 /* harmony import */ var _sendFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sendFeedback */ "./src/js/functions/sendFeedback.js");
-/* harmony import */ var _sendFeedback__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_sendFeedback__WEBPACK_IMPORTED_MODULE_0__);
 
 var onSubmitFeedback = function onSubmitFeedback() {
   var form = document.forms['feedback'];
@@ -2661,128 +2562,100 @@ var onSubmitFeedback = function onSubmitFeedback() {
     firstName: document.getElementById('firstName'),
     lastName: document.getElementById('lastName'),
     email: document.getElementById('email'),
-    country: document.getElementById('country'),
-    password: document.getElementById('password'),
-    passwordCheck: document.getElementById('passwordCheck'),
-    newsletter: document.getElementById('newsletter'),
-    question: document.getElementById('question'),
     rating: document.getElementsByName('rating'),
-    pricing: document.getElementsByName('pricing')
+    pricing: document.getElementsByName('pricing'),
+    question: document.getElementById('question')
   };
   var errorElements = {
     firstName: document.querySelector('.error--firstName'),
     lastName: document.querySelector('.error--lastName'),
     email: document.querySelector('.error--email'),
-    country: document.querySelector('.error--country'),
-    password: document.querySelector('.error--password'),
-    passwordCheck: document.querySelector('.error--passwordCheck'),
-    newsletter: document.querySelector('.error--newsletter'),
-    question: document.querySelector('.error--question'),
     rating: document.querySelector('.error--rating'),
-    pricing: document.querySelector('.error--pricing')
+    pricing: document.querySelector('.error--pricing'),
+    question: document.querySelector('.error--question')
   };
-  var button = document.getElementById('submitButton');
-
-  var checkRadios = function checkRadios(items) {
-    var isValid = true;
-    items.forEach(function (item) {
-      if (item.checked === false) return isValid = false;
-    });
-
-    if (!isValid) {
-      return 'The radios are empty';
-    }
-
-    return '';
-  };
+  var button = document.getElementById('submitButton'); // const checkRadios = (items) => {
+  //   let isValid = true;
+  //   items.forEach(item => {
+  //     if (item.checked === false) return isValid = false;
+  //   })
+  //   if (!isValid) {
+  //     return 'The radios are empty';
+  //   }
+  //   return '';
+  // }
 
   var isNotEmpty = function isNotEmpty(value) {
-    if (value.length == 0 || value == null || typeof value == 'undefined') {
+    if (value == '' || value == null || typeof value == 'undefined') {
       return 'The field is empty';
     } else return '';
   };
 
-  var isNumber = function isNumber(num) {
-    if (num.length > 0 && !isNaN(num)) {
-      return '';
-    }
-
-    return 'The field is empty';
-  };
-
   var isEmail = function isEmail(email) {
-    var regex = /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/;
-
-    if (regex.test(String(email).toLowerCase())) {
-      return '';
-    } else {
-      return 'The field is not an email';
-    }
-  };
-
-  var isPasswordValid = function isPasswordValid(password) {
-    if (password.length > 5) {
-      return true;
-    }
-
-    return false;
+    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (regex.test(String(email).toLowerCase())) return '';
+    return 'The field is not an email';
   };
 
   var fieldValidation = function fieldValidation(field, validationFunction, errorElement) {
-    if (field == null) return false;
-    var errorMessage = validationFunction(field.length === 1 ? field.value : field);
-
-    if (errorMessage) {
-      return errorElement.innerHTML = errorMessage;
-    }
-  };
-
-  var arePasswordsEqual = function arePasswordsEqual() {
-    if (fields.password.value == fields.passwordCheck.value) {
-      return '';
-    }
-
-    return 'The passwords are not equal';
+    var errorMessage = validationFunction(field);
+    if (errorMessage) return errorElement.innerHTML = errorMessage;
+    return true;
   };
 
   var isValid = function isValid() {
+    var ratingValue = document.querySelector('input[name="rating"]:checked');
+    var pricingValue = document.querySelector('input[name="pricing"]:checked');
     var valid = true;
-    valid &= fieldValidation(fields.firstName, isNotEmpty, errorElements.firstName);
-    valid &= fieldValidation(fields.lastName, isNotEmpty, errorElements.lastName);
-    valid &= fieldValidation(fields.country, isNotEmpty, errorElements.country);
-    valid &= fieldValidation(fields.email, isEmail, errorElements.email);
-    valid &= fieldValidation(fields.password, isPasswordValid, errorElements.password);
-    valid &= fieldValidation(fields.passwordCheck, isPasswordValid, errorElements.passwordCheck);
-    valid &= fieldValidation(fields.question, isNotEmpty, errorElements.question);
-    valid &= fieldValidation(fields.rating, checkRadios, errorElements.rating);
-    valid &= fieldValidation(fields.pricing, checkRadios, errorElements.pricing);
-    valid &= arePasswordsEqual();
+    valid &= fieldValidation(fields.firstName.value, isNotEmpty, errorElements.firstName);
+    valid &= fieldValidation(fields.lastName.value, isNotEmpty, errorElements.lastName);
+    valid &= fieldValidation(fields.email.value, isEmail, errorElements.email);
+    valid &= fieldValidation(fields.question.value, isNotEmpty, errorElements.question);
+    valid &= fieldValidation(ratingValue, isNotEmpty, errorElements.rating);
+    valid &= fieldValidation(pricingValue, isNotEmpty, errorElements.pricing);
     return valid;
   };
 
   var checkFill = function checkFill() {
+    var ratingValue = document.querySelector('input[name="rating"]:checked');
+    var pricingValue = document.querySelector('input[name="pricing"]:checked');
     if (!fields.firstName.value) return;
     if (!fields.lastName.value) return;
     if (!fields.email.value) return;
-    if (!fields.country.value) return;
-    if (!fields.password.value) return;
-    if (!fields.passwordCheck.value) return;
-    if (!fields.newsletter.value) return;
     if (!fields.question.value) return;
-    if (checkRadios(fields.rating)) return;
-    if (checkRadios(fields.pricing)) return;
-    button.classList.remove('disabled');
+    if (!ratingValue.value) return;
+    if (!pricingValue.value) return;
+    button.classList.remove('feedback__button--disabled');
   };
 
   var addFeedback = function addFeedback(event) {
     event.preventDefault();
+    var ratingValue = document.querySelector('input[name="rating"]:checked').value;
+    var pricingValue = document.querySelector('input[name="pricing"]:checked').value;
+    var fullName = "".concat(fields.firstName.value, " ").concat(fields.lastName.value);
+    var email = fields.email.value;
+    var question = fields.question.value;
 
     if (isValid()) {
-      (0,_sendFeedback__WEBPACK_IMPORTED_MODULE_0__.sendFeedback)({});
+      (0,_sendFeedback__WEBPACK_IMPORTED_MODULE_0__.sendFeedback)({
+        pizzaRating: ratingValue,
+        prizeRating: pricingValue,
+        name: fullName,
+        email: email,
+        feedback: question
+      });
     }
   };
 
   var setEvents = function setEvents() {
+    var radioRating = document.querySelector('input[name="rating"]');
+    var radioPricing = document.querySelector('input[name="pricing"]');
+    fields.email.addEventListener('input', checkFill);
+    fields.firstName.addEventListener('input', checkFill);
+    fields.lastName.addEventListener('input', checkFill);
+    fields.question.addEventListener('input', checkFill);
+    radioRating.addEventListener('input', checkFill);
+    radioPricing.addEventListener('input', checkFill);
     button.addEventListener('click', addFeedback);
     form.addEventListener('change', checkFill);
   };
@@ -2929,9 +2802,64 @@ var createElement = function createElement(wrapper, data, type) {
 /*!******************************************!*\
   !*** ./src/js/functions/sendFeedback.js ***!
   \******************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/czuczak/Documents/code/Pizza/src/js/functions/sendFeedback.js: Unexpected reserved word 'await'. (12:2)\n\n\u001b[0m \u001b[90m 10 |\u001b[39m   \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'auth'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 11 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m axios\u001b[33m.\u001b[39mpost(\u001b[32m`${API_URL}/orders`\u001b[39m\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 |\u001b[39m       pizzaRating\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 |\u001b[39m       prizeRating\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 15 |\u001b[39m       name\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:541:17)\n    at Parser.raiseWithData (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:534:17)\n    at Parser.raise (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:495:17)\n    at Parser.checkReservedWord (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12958:12)\n    at Parser.parseIdentifierName (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12912:12)\n    at Parser.parseIdentifier (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12882:23)\n    at Parser.parseExprAtom (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11996:27)\n    at Parser.parseExprSubscripts (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11584:23)\n    at Parser.parseUpdate (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11564:21)\n    at Parser.parseMaybeUnary (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11539:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sendFeedback": () => (/* binding */ sendFeedback)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
+/* harmony import */ var _handleFeedbacks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./handleFeedbacks */ "./src/js/functions/handleFeedbacks.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+var sendFeedback = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+    var token, pizzaRating, prizeRating, name, email, feedback;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            token = localStorage.getItem('auth');
+            pizzaRating = data.pizzaRating, prizeRating = data.prizeRating, name = data.name, email = data.email, feedback = data.feedback;
+            _context.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/feedback"), {
+              pizzaRating: pizzaRating,
+              prizeRating: prizeRating,
+              name: name,
+              email: email,
+              feedback: feedback
+            }, {
+              headers: {
+                Authorization: token
+              }
+            }).then(function () {
+              (0,_handleFeedbacks__WEBPACK_IMPORTED_MODULE_3__.handleFeedbacks)();
+            });
+
+          case 4:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function sendFeedback(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
 
 /***/ }),
 

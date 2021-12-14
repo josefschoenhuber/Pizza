@@ -61,14 +61,6 @@
     </div>
   </header>
   <main class="sections">
-    <div class="container">
-      <div class="heading">
-        <div class="heading__text">
-          Feedbacks
-        </div>
-      </div>
-      <ul class="list" data-feedback></ul>
-    </div>
     <div class="feedback">
       <div class="container">
         <div class="feedback__inner">
@@ -96,39 +88,15 @@
                 <span class="error error--email"></span>
               </div>
 
-              <select class="feedback__select" id="country">
-                <option disabled selected value> -- select a country -- </option>
-                <option value="USA">USA</option>
-                <option value="Canada">Canada</option>
-                <option value="Box">Rest of World</option>
-              </select>
-              <span class="error error--country"></span>
-
-              <div class="feedback__inputBox">
-                <input class="feedback__input" type="password" placeholder="Enter password" id="password" />
-                <span class="error error--password"></span>
-              </div>
-
-
-              <div class="feedback__inputBox feedback__inputBox--last">
-                <input class="feedback__input" type="password" placeholder="Enter password (check)"
-                  id="passwordCheck" />
-                <span class="error error--passwordCheck"></span>
-              </div>
-
-
-              <!-- <input class="checkbox" type="checkbox" id="newsletter" />Send me monthly newsletter
-                            <span class="error error--newsletter"></span> -->
-
               <h4 class="feedback__title">How do you like our Pizza?</h4>
               <div class="feedback__radios">
-                <input class="feedback__radio" type="radio" id="ratingAwesome" name="rating" value="1">
+                <input class="feedback__radio" type="radio" id="ratingAwesome" name="rating" value="awesome">
                 <label for="ratingAwesome" class="feedback__label">Awesome</label>
-                <input class="feedback__radio" type="radio" id="ratingGood" name="rating" value="2">
+                <input class="feedback__radio" type="radio" id="ratingGood" name="rating" value="good">
                 <label for="ratingGood" class="feedback__label">Good</label>
-                <input class="feedback__radio" type="radio" id="ratingOkay" name="rating" value="3">
+                <input class="feedback__radio" type="radio" id="ratingOkay" name="rating" value="okay">
                 <label for="ratingOkay" class="feedback__label">Okay</label>
-                <input class="feedback__radio" type="radio" id="ratingPoor" name="rating" value="4">
+                <input class="feedback__radio" type="radio" id="ratingPoor" name="rating" value="poor">
                 <label for="ratingPoor" class="feedback__label">Poor</label>
               </div>
 
@@ -136,11 +104,11 @@
 
               <h4 class="feedback__title">What do you think about our prizes?</h4>
               <div class="feedback__radios">
-                <input class="feedback__radio" type="radio" id="pricingFair" name="pricing" value="1">
+                <input class="feedback__radio" type="radio" id="pricingFair" name="pricing" value="fair">
                 <label for="pricingFair" class="feedback__label">Fair</label>
-                <input class="feedback__radio" type="radio" id="pricingOkay" name="pricing" value="2">
+                <input class="feedback__radio" type="radio" id="pricingOkay" name="pricing" value="okay">
                 <label for="pricingOkay" class="feedback__label">Okay</label>
-                <input class="feedback__radio" type="radio" id="pricingExpensive" name="pricing" value="3">
+                <input class="feedback__radio" type="radio" id="pricingExpensive" name="pricing" value="expensive">
                 <label for="pricingExpensive" class="feedback__label">Expensive</label>
               </div>
 
@@ -153,11 +121,19 @@
               </div>
               <span class="error error--question"></span>
 
-              <button class="feedback__button" id="submitButton">Submit</button>
+              <button class="feedback__button feedback__button--disabled" id="submitButton">Submit</button>
             </form>
           </div>
         </div>
       </div>
+    </div>
+    <div class="container">
+      <div class="heading">
+        <div class="heading__text">
+          Feedbacks
+        </div>
+      </div>
+      <ul class="list" data-feedback></ul>
     </div>
   </main>
   <!-- 
