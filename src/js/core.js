@@ -11,8 +11,8 @@ const core = async () => {
   hamburgerToggle();
 
   if (isAuthorized) {
-    handleFeedbacks();
     handleOrders();
+    handleFeedbacks();
     fetchAll();
     onSubmitFeedback();
   }

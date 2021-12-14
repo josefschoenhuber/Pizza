@@ -2202,8 +2202,8 @@ var core = /*#__PURE__*/function () {
             (0,_functions_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__.hamburgerToggle)();
 
             if (isAuthorized) {
-              (0,_functions_handleFeedbacks_js__WEBPACK_IMPORTED_MODULE_6__.handleFeedbacks)();
               (0,_functions_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__.handleOrders)();
+              (0,_functions_handleFeedbacks_js__WEBPACK_IMPORTED_MODULE_6__.handleFeedbacks)();
               (0,_functions_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
               (0,_functions_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
             }
@@ -2388,7 +2388,7 @@ var handleFeedbacks = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             token = localStorage.getItem('auth');
-            wrapper = document.querySelector('[data-feedbacks]');
+            wrapper = document.querySelector('[data-feedback]');
 
             if (wrapper) {
               _context.next = 4;
@@ -2399,7 +2399,7 @@ var handleFeedbacks = /*#__PURE__*/function () {
 
           case 4:
             _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/feedbacks"), {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/feedback"), {
               headers: {
                 Authorization: token
               }
@@ -2441,11 +2441,7 @@ var handleFeedbacks = /*#__PURE__*/function () {
 var createElement = function createElement(wrapper, data, index) {
   var element = document.createElement('div');
   element.classList.add('card');
-  var icon = '';
-  if (data.type === 'pizza') icon = '🍕';
-  if (data.type === 'salad') icon = '🥗';
-  if (data.type === 'softdrink') icon = '🥤';
-  element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding card__content--row\" >\n      <div class=\"card__number\">#".concat(++index, "</div> \n      <div class=\"card__name\">").concat(data.name, "</div> \n      <div class=\"card__type\">").concat(icon, "</div>\n    </div>\n  ");
+  element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding\" >\n      <div class=\"card__header\">\n        <div class=\"card__name\">".concat(data.name, "</div> \n        <a class=\"card__email\" href=\"mailto:").concat(data.email, "\">").concat(data.email, "</a> \n      </div>\n      <div class=\"card__ratings\">\n        <div class=\"card__ratingsPrice\">Price: ").concat(data.prizeRating, "</div>\n        <div class=\"card__ratingsPizza\">Pizza: ").concat(data.pizzaRating, "</div>\n      </div>\n      <div class=\"card__feedback\">").concat(data.feedback, "</div> \n    </div>\n  ");
   wrapper.prepend(element);
 };
 
@@ -2557,6 +2553,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "onSubmitFeedback": () => (/* binding */ onSubmitFeedback)
 /* harmony export */ });
+/* harmony import */ var _sendFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sendFeedback */ "./src/js/functions/sendFeedback.js");
+/* harmony import */ var _sendFeedback__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_sendFeedback__WEBPACK_IMPORTED_MODULE_0__);
+
 var onSubmitFeedback = function onSubmitFeedback() {
   var form = document.forms['feedback'];
   if (!form) return;
@@ -2614,7 +2613,7 @@ var onSubmitFeedback = function onSubmitFeedback() {
   };
 
   var isEmail = function isEmail(email) {
-    var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    var regex = /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/;
 
     if (regex.test(String(email).toLowerCase())) {
       return '';
@@ -2680,7 +2679,9 @@ var onSubmitFeedback = function onSubmitFeedback() {
   var addFeedback = function addFeedback(event) {
     event.preventDefault();
 
-    if (isValid()) {}
+    if (isValid()) {
+      (0,_sendFeedback__WEBPACK_IMPORTED_MODULE_0__.sendFeedback)({});
+    }
   };
 
   var setEvents = function setEvents() {
@@ -2823,6 +2824,16 @@ var createElement = function createElement(wrapper, data, type) {
   button.addEventListener('click', orderProduct);
   wrapper.appendChild(element);
 };
+
+/***/ }),
+
+/***/ "./src/js/functions/sendFeedback.js":
+/*!******************************************!*\
+  !*** ./src/js/functions/sendFeedback.js ***!
+  \******************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/czuczak/Documents/code/Pizza/src/js/functions/sendFeedback.js: Unexpected reserved word 'await'. (12:2)\n\n\u001b[0m \u001b[90m 10 |\u001b[39m   \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'auth'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 11 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m axios\u001b[33m.\u001b[39mpost(\u001b[32m`${API_URL}/orders`\u001b[39m\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 |\u001b[39m       pizzaRating\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 |\u001b[39m       prizeRating\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 15 |\u001b[39m       name\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:541:17)\n    at Parser.raiseWithData (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:534:17)\n    at Parser.raise (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:495:17)\n    at Parser.checkReservedWord (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12958:12)\n    at Parser.parseIdentifierName (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12912:12)\n    at Parser.parseIdentifier (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12882:23)\n    at Parser.parseExprAtom (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11996:27)\n    at Parser.parseExprSubscripts (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11584:23)\n    at Parser.parseUpdate (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11564:21)\n    at Parser.parseMaybeUnary (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11539:23)");
 
 /***/ }),
 

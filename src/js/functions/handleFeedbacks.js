@@ -3,12 +3,12 @@ import { API_URL } from '../settings/constants';
 
 export const handleFeedbacks = async () => {
   const token = localStorage.getItem('auth');
-  const wrapper = document.querySelector('[data-feedbacks]');
+  const wrapper = document.querySelector('[data-feedback]');
 
   if (!wrapper) return;
 
   const results = await axios
-    .get(`${API_URL}/feedbacks`, {
+    .get(`${API_URL}/feedback`, {
       headers: {
         Authorization: token,
       }
@@ -28,17 +28,17 @@ const createElement = (wrapper, data, index) => {
 
   element.classList.add('card');
 
-  let icon = '';
-
-  if (data.type === 'pizza') icon = '🍕';
-  if (data.type === 'salad') icon = '🥗';
-  if (data.type === 'softdrink') icon = '🥤';
-
   element.innerHTML = `
-    <div div class = "card__content card__content--biggerPadding card__content--row" >
-      <div class="card__number">#${++index}</div> 
-      <div class="card__name">${data.name}</div> 
-      <div class="card__type">${icon}</div>
+    <div div class = "card__content card__content--biggerPadding" >
+      <div class="card__header">
+        <div class="card__name">${data.name}</div> 
+        <a class="card__email" href="mailto:${data.email}">${data.email}</a> 
+      </div>
+      <div class="card__ratings">
+        <div class="card__ratingsPrice">Price: ${data.prizeRating}</div>
+        <div class="card__ratingsPizza">Pizza: ${data.pizzaRating}</div>
+      </div>
+      <div class="card__feedback">${data.feedback}</div> 
     </div>
   `;
 

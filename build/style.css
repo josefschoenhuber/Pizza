@@ -7813,3 +7813,24 @@ body {
     font-size: 4rem;
   }
 }
+.card__header {
+  margin-bottom: 15px;
+}
+.card__name {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.card__email {
+  text-decoration: underline;
+}
+.card__email:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
+.card__pizzaRating {
+  margin-bottom: 10px;
+}
+.card__ratings {
+  line-height: 1.5;
+  margin-bottom: 15px;
+}

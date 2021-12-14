@@ -1,3 +1,5 @@
+import { sendFeedback } from './sendFeedback';
+
 export const onSubmitFeedback = () => {
 
   const form = document.forms['feedback'];
@@ -59,7 +61,7 @@ export const onSubmitFeedback = () => {
   }
 
   const isEmail = (email) => {
-    let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    let regex = /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/;
     if (regex.test(String(email).toLowerCase())) {
       return '';
     } else {
@@ -129,7 +131,9 @@ export const onSubmitFeedback = () => {
     event.preventDefault();
 
     if (isValid()) {
-      
+      sendFeedback({
+        
+      });
     }
   }
 

@@ -112,4 +112,31 @@
       font-size: 4rem;
     }
   }
+
+  &__header {
+    margin-bottom: 15px;
+  }
+
+  &__name {
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  &__email {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: .7;
+    }
+  }
+
+  &__pizzaRating {
+    margin-bottom: 10px;
+  }
+
+  &__ratings {
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
 }
