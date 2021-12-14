@@ -1,0 +1,38 @@
+.footer {
+  background-color: $cSec;
+  color: $cWhite;
+  padding: 50px 0;
+
+  &__columns {
+    display: flex;
+    gap: 40px;
+
+    @include rwd ('tablet') {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__column {
+    flex: 1;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  &__columnTitle {
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  &__quote {
+    flex: 3;
+    margin: auto;
+    margin-bottom: 30px;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  &__quoteAuthor {
+    font-weight: 600;
+  }
+}

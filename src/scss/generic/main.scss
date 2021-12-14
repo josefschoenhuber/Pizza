@@ -1,0 +1,62 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $fMain;
+  font-size: 10px;
+  line-height: 1;
+}
+
+body {
+  color: $cSec;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.error {
+  display: block;
+  color: $cError;
+  // margin-bottom: 20px;
+  line-height: 2;
+}
+
+.list {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  height: auto;
+  padding: 50px 0;
+
+  @include rwd('large-phone') {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+.sections {
+  margin-top: 70px;
+  min-height: 80vh;
+}
+
+.heading {
+  padding-top: 50px;
+
+  &__text {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+  }
+}

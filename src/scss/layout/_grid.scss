@@ -1,0 +1,203 @@
+/*
+  This grid is a simplified version of Bootstrap Grid system:
+  https://getbootstrap.com/docs/3.3/css/#grid
+  Available classes:
+    • container (or container-fluid)
+    • row (or row--fluid, or row--flex if you can use display: flex;)
+    • col-*-[1-12] (single column)
+    • offset-col-*-[1-12] (column margin)
+  Default classes to change the grid system at different resolutions:
+    large-laptop (<= 1366px):
+    • col-lgl-[1-12]
+    • offset-col-lgl-[1-12]
+    laptop (<= 1280px):
+    • col-lg-[1-12]
+    • offset-col-lg-[1-12]
+    large-tablet (<= 1024px):
+    • col-mdl-[1-12]
+    • offset-col-mdl-[1-12]
+    tablet (<= 768px):
+    • col-md-[1-12]
+    • offset-col-md-[1-12]
+    small-tablet (<= 600px):
+    • col-mds-[1-12]
+    • offset-col-mds-[1-12]
+    large-phone (<= 480px):
+    • col-sml-[1-12]
+    • offset-col-sml-[1-12]
+    phone (<= 360px):
+    • col-sm-[1-12]
+    • offset-col-sm-[1-12]
+*/
+
+$rwdClassess : ('large-laptop' : 'lgl',
+  'laptop' : 'lg',
+  'large-tablet' : 'mdl',
+  'tablet' : 'md',
+  'small-tablet' : 'mds',
+  'large-phone' : 'sml',
+  'phone' : 'sm'
+);
+
+$gridWidth : 1200px !default;
+$gridGutter : 20px !default;
+$rtlActive : false !default;
+
+.container {
+  width: 100%;
+  max-width: ($gridWidth + ($gridGutter * 2));
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gridGutter;
+  padding-right: $gridGutter;
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  @include rwd('laptop') {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  &--fluid {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* ---
+    Rows
+  --- */
+
+  .row {
+    margin-left: -($gridGutter / 2);
+    margin-right: -($gridGutter / 2);
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    &--fluid {
+      margin-left: 0;
+      margin-right: 0;
+
+      .col-1,
+      .col-2,
+      .col-3,
+      .col-4,
+      .col-5,
+      .col-6,
+      .col-7,
+      .col-8,
+      .col-9,
+      .col-10,
+      .col-11,
+      .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    &--flex {
+      display: flex;
+      flex-wrap: wrap;
+
+      .col-1,
+      .col-2,
+      .col-3,
+      .col-4,
+      .col-5,
+      .col-6,
+      .col-7,
+      .col-8,
+      .col-9,
+      .col-10,
+      .col-11,
+      .col-12 {
+        float: none;
+        display: flex;
+      }
+    }
+
+    /* ---
+      Columns
+    --- */
+
+    .col-1,
+    .col-2,
+    .col-3,
+    .col-4,
+    .col-5,
+    .col-6,
+    .col-7,
+    .col-8,
+    .col-9,
+    .col-10,
+    .col-11,
+    .col-12 {
+      float: left;
+      padding-left: ($gridGutter / 2);
+      padding-right: ($gridGutter / 2);
+      box-sizing: border-box;
+    }
+
+    /* ---
+      Default sizes
+    --- */
+
+    @for $i from 1 to 13 {
+
+      .col-#{$i} {
+        width: ($i * (100% / 12));
+      }
+    }
+
+    @for $i from 1 to 13 {
+
+      .offset-col-#{$i} {
+        margin-left: ($i * (100% / 12));
+      }
+    }
+
+    /* ---
+      RWD classes
+    --- */
+
+    @each $breakPoint,
+    $index in $rwdClassess {
+
+      @include rwd(#{$breakPoint}) {
+
+        &.row-#{$index}-block {
+          display: block;
+        }
+
+        @for $i from 1 to 13 {
+
+          .col-#{$index}-#{$i} {
+            margin-left: 0;
+            width: ($i * (100% / 12));
+          }
+        }
+
+        @for $i from 1 to 13 {
+
+          .offset-col-#{$index}-#{$i} {
+            margin-left: ($i * (100% / 12));
+          }
+        }
+      }
+    }
+  }
+}

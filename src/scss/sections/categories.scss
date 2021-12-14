@@ -1,0 +1,39 @@
+.categories {
+  padding: 50px 0;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__titleText {
+    align-items: center;
+    display: flex;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    width: fit-content;
+
+    &:before,
+    &:after {
+      background-color: $cSec;
+      content: '';
+      display: block;
+      height: 3px;
+      margin: 0 10px;
+      width: 30px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 50px 0;
+  }
+
+  &__link {
+    flex: 1;
+    min-width: 200px;
+  }
+}

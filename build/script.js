@@ -2158,10 +2158,77 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./src/js/components/authorize.js":
-/*!****************************************!*\
-  !*** ./src/js/components/authorize.js ***!
-  \****************************************/
+/***/ "./src/js/core.js":
+/*!************************!*\
+  !*** ./src/js/core.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _functions_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/onSubmitFeedback.js */ "./src/js/functions/onSubmitFeedback.js");
+/* harmony import */ var _functions_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./functions/fetchAll.js */ "./src/js/functions/fetchAll.js");
+/* harmony import */ var _functions_authorize_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./functions/authorize.js */ "./src/js/functions/authorize.js");
+/* harmony import */ var _functions_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./functions/hamburgerToggle.js */ "./src/js/functions/hamburgerToggle.js");
+/* harmony import */ var _functions_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functions/handleOrders.js */ "./src/js/functions/handleOrders.js");
+/* harmony import */ var _functions_handleFeedbacks_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./functions/handleFeedbacks.js */ "./src/js/functions/handleFeedbacks.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+
+
+
+var core = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var isAuthorized;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0,_functions_authorize_js__WEBPACK_IMPORTED_MODULE_3__.authorize)();
+
+          case 2:
+            isAuthorized = _context.sent;
+            (0,_functions_hamburgerToggle_js__WEBPACK_IMPORTED_MODULE_4__.hamburgerToggle)();
+
+            if (isAuthorized) {
+              (0,_functions_handleOrders_js__WEBPACK_IMPORTED_MODULE_5__.handleOrders)();
+              (0,_functions_handleFeedbacks_js__WEBPACK_IMPORTED_MODULE_6__.handleFeedbacks)();
+              (0,_functions_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
+              (0,_functions_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
+            }
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function core() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+document.addEventListener("DOMContentLoaded", core);
+
+/***/ }),
+
+/***/ "./src/js/functions/authorize.js":
+/*!***************************************!*\
+  !*** ./src/js/functions/authorize.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2229,10 +2296,10 @@ var authorize = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./src/js/components/fetchAll.js":
-/*!***************************************!*\
-  !*** ./src/js/components/fetchAll.js ***!
-  \***************************************/
+/***/ "./src/js/functions/fetchAll.js":
+/*!**************************************!*\
+  !*** ./src/js/functions/fetchAll.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2240,31 +2307,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchAll": () => (/* binding */ fetchAll)
 /* harmony export */ });
-/* harmony import */ var _getPizzas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getPizzas */ "./src/js/components/getPizzas.js");
-/* harmony import */ var _getSalads__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getSalads */ "./src/js/components/getSalads.js");
-/* harmony import */ var _getSoftDrinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getSoftDrinks */ "./src/js/components/getSoftDrinks.js");
-
-
+/* harmony import */ var _requestData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./requestData */ "./src/js/functions/requestData.js");
 
 var fetchAll = function fetchAll() {
-  (0,_getPizzas__WEBPACK_IMPORTED_MODULE_0__.getPizzas)();
-  (0,_getSalads__WEBPACK_IMPORTED_MODULE_1__.getSalads)();
-  (0,_getSoftDrinks__WEBPACK_IMPORTED_MODULE_2__.getSoftDrinks)();
+  var selectors = {
+    pizza: {
+      wrapper: document.querySelector('[data-pizza]'),
+      endpoint: 'pizzas',
+      type: 'pizza'
+    },
+    salad: {
+      wrapper: document.querySelector('[data-salad]'),
+      endpoint: 'salads',
+      type: 'salad'
+    },
+    drink: {
+      wrapper: document.querySelector('[data-soft-drinks]'),
+      endpoint: 'softdrinks',
+      type: 'softdrink'
+    }
+  };
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.pizza.wrapper, selectors.pizza.endpoint, selectors.pizza.type);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.salad.wrapper, selectors.salad.endpoint, selectors.salad.type);
+  (0,_requestData__WEBPACK_IMPORTED_MODULE_0__.requestData)(selectors.drink.wrapper, selectors.drink.endpoint, selectors.drink.type);
 };
 
 /***/ }),
 
-/***/ "./src/js/components/getPizzas.js":
-/*!****************************************!*\
-  !*** ./src/js/components/getPizzas.js ***!
-  \****************************************/
+/***/ "./src/js/functions/hamburgerToggle.js":
+/*!*********************************************!*\
+  !*** ./src/js/functions/hamburgerToggle.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getPizzas": () => (/* binding */ getPizzas)
+/* harmony export */   "hamburgerToggle": () => (/* binding */ hamburgerToggle)
 /* harmony export */ });
+<<<<<<< HEAD:build/core.js
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -2342,22 +2423,29 @@ var createElement = function createElement(wrapper, data) {
   element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
+=======
+var hamburgerToggle = function hamburgerToggle() {
+  var wrapper = document.querySelector('.header__hamburger');
+  var button = document.querySelector('.header__hamburgerIcon');
+  if (!wrapper) return;
+  button.addEventListener('click', function () {
+    wrapper.classList.toggle('header__hamburger--active');
+>>>>>>> feature/refactor:build/script.js
   });
-  wrapper.appendChild(element);
 };
 
 /***/ }),
 
-/***/ "./src/js/components/getSalads.js":
-/*!****************************************!*\
-  !*** ./src/js/components/getSalads.js ***!
-  \****************************************/
+/***/ "./src/js/functions/handleFeedbacks.js":
+/*!*********************************************!*\
+  !*** ./src/js/functions/handleFeedbacks.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getSalads": () => (/* binding */ getSalads)
+/* harmony export */   "handleFeedbacks": () => (/* binding */ handleFeedbacks)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -2372,7 +2460,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var getSalads = /*#__PURE__*/function () {
+var handleFeedbacks = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
     var token, wrapper, results;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -2380,9 +2468,9 @@ var getSalads = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             token = localStorage.getItem('auth');
-            wrapper = document.querySelector('.salads');
+            wrapper = document.querySelector('[data-feedback]');
 
-            if (!(!wrapper || !token)) {
+            if (wrapper) {
               _context.next = 4;
               break;
             }
@@ -2391,7 +2479,7 @@ var getSalads = /*#__PURE__*/function () {
 
           case 4:
             _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/salads"), {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/feedback"), {
               headers: {
                 Authorization: token
               }
@@ -2413,8 +2501,8 @@ var getSalads = /*#__PURE__*/function () {
 
           case 9:
             wrapper.innerHTML = "";
-            results.forEach(function (result) {
-              return createElement(wrapper, result);
+            results.forEach(function (result, index) {
+              return createElement(wrapper, result, index);
             });
 
           case 11:
@@ -2425,33 +2513,39 @@ var getSalads = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getSalads() {
+  return function handleFeedbacks() {
     return _ref.apply(this, arguments);
   };
 }();
 
-var createElement = function createElement(wrapper, data) {
+var createElement = function createElement(wrapper, data, index) {
   var element = document.createElement('div');
+<<<<<<< HEAD:build/core.js
   element.classList.add('salads__item');
   element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>").concat(data.ingredients.join(', '), "</h8>\n      <br>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
   });
   wrapper.appendChild(element);
+=======
+  element.classList.add('card');
+  element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding\" >\n      <div class=\"card__header\">\n        <div class=\"card__name\">".concat(data.name, "</div> \n        <a class=\"card__email\" href=\"mailto:").concat(data.email, "\">").concat(data.email, "</a> \n      </div>\n      <div class=\"card__ratings\">\n        <div class=\"card__ratingsPrice\">Price: ").concat(data.prizeRating, "</div>\n        <div class=\"card__ratingsPizza\">Pizza: ").concat(data.pizzaRating, "</div>\n      </div>\n      <div class=\"card__feedback\">").concat(data.feedback, "</div> \n    </div>\n  ");
+  wrapper.prepend(element);
+>>>>>>> feature/refactor:build/script.js
 };
 
 /***/ }),
 
-/***/ "./src/js/components/getSoftDrinks.js":
-/*!********************************************!*\
-  !*** ./src/js/components/getSoftDrinks.js ***!
-  \********************************************/
+/***/ "./src/js/functions/handleOrders.js":
+/*!******************************************!*\
+  !*** ./src/js/functions/handleOrders.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getSoftDrinks": () => (/* binding */ getSoftDrinks)
+/* harmony export */   "handleOrders": () => (/* binding */ handleOrders)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -2466,7 +2560,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var getSoftDrinks = /*#__PURE__*/function () {
+var handleOrders = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
     var token, wrapper, results;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -2474,9 +2568,9 @@ var getSoftDrinks = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             token = localStorage.getItem('auth');
-            wrapper = document.querySelector('.softDrinks');
+            wrapper = document.querySelector('[data-orders]');
 
-            if (!(!wrapper || !token)) {
+            if (wrapper) {
               _context.next = 4;
               break;
             }
@@ -2485,7 +2579,7 @@ var getSoftDrinks = /*#__PURE__*/function () {
 
           case 4:
             _context.next = 6;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/softdrinks"), {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/orders"), {
               headers: {
                 Authorization: token
               }
@@ -2507,8 +2601,8 @@ var getSoftDrinks = /*#__PURE__*/function () {
 
           case 9:
             wrapper.innerHTML = "";
-            results.forEach(function (result) {
-              return createElement(wrapper, result);
+            results.forEach(function (result, index) {
+              return createElement(wrapper, result, index);
             });
 
           case 11:
@@ -2519,27 +2613,37 @@ var getSoftDrinks = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getSoftDrinks() {
+  return function handleOrders() {
     return _ref.apply(this, arguments);
   };
 }();
 
-var createElement = function createElement(wrapper, data) {
+var createElement = function createElement(wrapper, data, index) {
   var element = document.createElement('div');
+<<<<<<< HEAD:build/core.js
   element.classList.add('softDrinks__item');
   element.innerHTML = "\n    <div class=\"card\">\n      <img src=\"".concat(data.imageUrl, "\">\n      <h2>").concat(data.name, " ").concat(data.prize, "<a href=\"#\"> <span class=\"glyphicon glyphicon-shopping-cart\" </span> </a> <br>\n      </h2>\n      <h8>volume: ").concat(data.volume, "</h8>\n      <br>\n    </div>\n  ");
   element.addEventListener('click', function () {
     console.log(data.id);
   });
   wrapper.appendChild(element);
+=======
+  element.classList.add('card');
+  var icon = '';
+  if (data.type === 'pizza') icon = '🍕';
+  if (data.type === 'salad') icon = '🥗';
+  if (data.type === 'softdrink') icon = '🥤';
+  element.innerHTML = "\n    <div div class = \"card__content card__content--biggerPadding card__content--row\" >\n      <div class=\"card__number\">#".concat(++index, "</div> \n      <div class=\"card__name\">").concat(data.name, "</div> \n      <div class=\"card__type\">").concat(icon, "</div>\n    </div>\n  ");
+  wrapper.prepend(element);
+>>>>>>> feature/refactor:build/script.js
 };
 
 /***/ }),
 
-/***/ "./src/js/components/onSubmitFeedback.js":
-/*!***********************************************!*\
-  !*** ./src/js/components/onSubmitFeedback.js ***!
-  \***********************************************/
+/***/ "./src/js/functions/onSubmitFeedback.js":
+/*!**********************************************!*\
+  !*** ./src/js/functions/onSubmitFeedback.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2547,7 +2651,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "onSubmitFeedback": () => (/* binding */ onSubmitFeedback)
 /* harmony export */ });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+/* harmony import */ var _sendFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sendFeedback */ "./src/js/functions/sendFeedback.js");
+/* harmony import */ var _sendFeedback__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_sendFeedback__WEBPACK_IMPORTED_MODULE_0__);
 
 var onSubmitFeedback = function onSubmitFeedback() {
   var form = document.forms['feedback'];
@@ -2591,52 +2696,56 @@ var onSubmitFeedback = function onSubmitFeedback() {
     return '';
   };
 
-  var setEvents = function setEvents() {
-    button.addEventListener('click', sendContact);
-  };
-
-  function isNotEmpty(value) {
+  var isNotEmpty = function isNotEmpty(value) {
     if (value.length == 0 || value == null || typeof value == 'undefined') {
       return 'The field is empty';
     } else return '';
-  }
+  };
 
-  function isNumber(num) {
+  var isNumber = function isNumber(num) {
     if (num.length > 0 && !isNaN(num)) {
       return '';
     }
 
     return 'The field is empty';
-  }
+  };
 
-  function isEmail(email) {
-    var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  var isEmail = function isEmail(email) {
+    var regex = /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/;
 
     if (regex.test(String(email).toLowerCase())) {
       return '';
     } else {
       return 'The field is not an email';
     }
-  }
+  };
 
-  function isPasswordValid(password) {
+  var isPasswordValid = function isPasswordValid(password) {
     if (password.length > 5) {
       return true;
     }
 
     return false;
-  }
+  };
 
-  function fieldValidation(field, validationFunction, errorElement) {
+  var fieldValidation = function fieldValidation(field, validationFunction, errorElement) {
     if (field == null) return false;
     var errorMessage = validationFunction(field.length === 1 ? field.value : field);
 
     if (errorMessage) {
       return errorElement.innerHTML = errorMessage;
     }
-  }
+  };
 
-  function isValid() {
+  var arePasswordsEqual = function arePasswordsEqual() {
+    if (fields.password.value == fields.passwordCheck.value) {
+      return '';
+    }
+
+    return 'The passwords are not equal';
+  };
+
+  var isValid = function isValid() {
     var valid = true;
     valid &= fieldValidation(fields.firstName, isNotEmpty, errorElements.firstName);
     valid &= fieldValidation(fields.lastName, isNotEmpty, errorElements.lastName);
@@ -2647,66 +2756,58 @@ var onSubmitFeedback = function onSubmitFeedback() {
     valid &= fieldValidation(fields.question, isNotEmpty, errorElements.question);
     valid &= fieldValidation(fields.rating, checkRadios, errorElements.rating);
     valid &= fieldValidation(fields.pricing, checkRadios, errorElements.pricing);
-    valid &= arePasswordsEqual(); // valid &= checkRadios(fields.rating, errorElements.rating);
-    // valid &= checkRadios(fields.pricing, errorElements.pricing);
-
+    valid &= arePasswordsEqual();
     return valid;
-  }
-
-  function arePasswordsEqual() {
-    if (fields.password.value == fields.passwordCheck.value) {
-      fields.password.className = 'placeholderRed';
-      fields.passwordCheck.className = 'placeholderRed';
-      return true;
-    }
-
-    return false;
-  }
-
-  var User = function User(firstName, lastName, rating, pricing, country, email, newsletter, question, password, passwordCheck) {
-    _classCallCheck(this, User);
-
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.rating = rating;
-    this.pricing = pricing;
-    this.country = country;
-    this.email = email;
-    this.newsletter = newsletter;
-    this.question = question;
-    this.password = password;
-    this.passwordCheck = passwordCheck;
   };
 
-  function sendContact(event) {
+  var checkFill = function checkFill() {
+    if (!fields.firstName.value) return;
+    if (!fields.lastName.value) return;
+    if (!fields.email.value) return;
+    if (!fields.country.value) return;
+    if (!fields.password.value) return;
+    if (!fields.passwordCheck.value) return;
+    if (!fields.newsletter.value) return;
+    if (!fields.question.value) return;
+    if (checkRadios(fields.rating)) return;
+    if (checkRadios(fields.pricing)) return;
+    button.classList.remove('disabled');
+  };
+
+  var addFeedback = function addFeedback(event) {
     event.preventDefault();
 
     if (isValid()) {
-      var usr = new User(firstName.value, lastName.value, rating.value, pricing.value, country.value, email.value, newsletter.checked, password.checked);
-      alert("".concat(usr.firstName, " thanks for registering."));
-    } else {
-      alert("There was an error");
+      (0,_sendFeedback__WEBPACK_IMPORTED_MODULE_0__.sendFeedback)({});
     }
-  }
+  };
+
+  var setEvents = function setEvents() {
+    button.addEventListener('click', addFeedback);
+    form.addEventListener('change', checkFill);
+  };
 
   setEvents();
 };
 
 /***/ }),
 
-/***/ "./src/js/core.js":
-/*!************************!*\
-  !*** ./src/js/core.js ***!
-  \************************/
+/***/ "./src/js/functions/requestData.js":
+/*!*****************************************!*\
+  !*** ./src/js/functions/requestData.js ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "requestData": () => (/* binding */ requestData)
+/* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/onSubmitFeedback.js */ "./src/js/components/onSubmitFeedback.js");
-/* harmony import */ var _components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/fetchAll.js */ "./src/js/components/fetchAll.js");
-/* harmony import */ var _components_authorize_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/authorize.js */ "./src/js/components/authorize.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _settings_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../settings/constants */ "./src/js/settings/constants.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2715,27 +2816,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
-
-var core = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var isAuthorized;
+var requestData = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(wrapper, endpoint, type) {
+    var token, results;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return (0,_components_authorize_js__WEBPACK_IMPORTED_MODULE_3__.authorize)();
+            token = localStorage.getItem('auth');
 
-          case 2:
-            isAuthorized = _context.sent;
-
-            if (isAuthorized) {
-              (0,_components_fetchAll_js__WEBPACK_IMPORTED_MODULE_2__.fetchAll)();
-              (0,_components_onSubmitFeedback_js__WEBPACK_IMPORTED_MODULE_1__.onSubmitFeedback)();
+            if (!(!wrapper || !token)) {
+              _context.next = 3;
+              break;
             }
 
-          case 4:
+            return _context.abrupt("return");
+
+          case 3:
+            _context.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/").concat(endpoint), {
+              headers: {
+                Authorization: token
+              }
+            }).then(function (response) {
+              return response.data;
+            })["catch"](function (error) {
+              return console.log(error);
+            });
+
+          case 5:
+            results = _context.sent;
+
+            if (results) {
+              _context.next = 8;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 8:
+            wrapper.innerHTML = "";
+            results.forEach(function (result) {
+              return createElement(wrapper, result, type);
+            });
+
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -2743,12 +2868,70 @@ var core = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function core() {
+  return function requestData(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
   };
 }();
 
-document.addEventListener("DOMContentLoaded", core);
+var createElement = function createElement(wrapper, data, type) {
+  var element = document.createElement('div');
+  element.classList.add('card');
+  element.innerHTML = "\n    <div class=\"card__inner\">\n      <div class=\"card__imageWrapper\">\n        <img class=\"card__image\" src=\"".concat(data.imageUrl, "\">\n      </div>\n      <div class=\"card__content\">\n        <h2 class=\"card__title\">\n          <span class=\"card__titleContent\">").concat(data.name, "</span> \n          <span class=\"card__buttonPrice\" data-price>").concat(data.prize, "<span class=\"card__cartIcon\"></span><span class=\"card__buttonTooltip\">ordered!</span></span>\n        </h2>\n        <h8  class=\"card__description\">").concat(data.hasOwnProperty('ingredients') ? data.ingredients.join(', ') : data.volume, "</h8>\n      </div>\n    </div>\n  ");
+  var button = element.querySelector('[data-price]');
+
+  var orderProduct = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var token;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              token = localStorage.getItem('auth');
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(_settings_constants__WEBPACK_IMPORTED_MODULE_2__.API_URL, "/orders"), {
+                type: type,
+                name: data.name
+              }, {
+                headers: {
+                  Authorization: token
+                }
+              }).then(function () {
+                var tooltip = button.querySelector('.card__buttonTooltip');
+
+                if (!tooltip.classList.contains('card__buttonTooltip--visible')) {
+                  tooltip.classList.add('card__buttonTooltip--visible');
+                  setTimeout(function () {
+                    return tooltip.classList.remove('card__buttonTooltip--visible');
+                  }, 1000);
+                }
+              });
+
+            case 3:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function orderProduct() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  button.addEventListener('click', orderProduct);
+  wrapper.appendChild(element);
+};
+
+/***/ }),
+
+/***/ "./src/js/functions/sendFeedback.js":
+/*!******************************************!*\
+  !*** ./src/js/functions/sendFeedback.js ***!
+  \******************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/czuczak/Documents/code/Pizza/src/js/functions/sendFeedback.js: Unexpected reserved word 'await'. (12:2)\n\n\u001b[0m \u001b[90m 10 |\u001b[39m   \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'auth'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 11 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m axios\u001b[33m.\u001b[39mpost(\u001b[32m`${API_URL}/orders`\u001b[39m\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 |\u001b[39m       pizzaRating\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 |\u001b[39m       prizeRating\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 15 |\u001b[39m       name\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:541:17)\n    at Parser.raiseWithData (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:534:17)\n    at Parser.raise (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:495:17)\n    at Parser.checkReservedWord (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12958:12)\n    at Parser.parseIdentifierName (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12912:12)\n    at Parser.parseIdentifier (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:12882:23)\n    at Parser.parseExprAtom (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11996:27)\n    at Parser.parseExprSubscripts (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11584:23)\n    at Parser.parseUpdate (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11564:21)\n    at Parser.parseMaybeUnary (/Users/czuczak/Documents/code/Pizza/node_modules/@babel/parser/lib/index.js:11539:23)");
 
 /***/ }),
 
@@ -2771,10 +2954,10 @@ var AUTH_PASS = 'WebG_HS2017@FFHS';
 
 /***/ }),
 
-/***/ "./src/css/style.css":
-/*!***************************!*\
-  !*** ./src/css/style.css ***!
-  \***************************/
+/***/ "./src/scss/core.scss":
+/*!****************************!*\
+  !*** ./src/scss/core.scss ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3852,7 +4035,7 @@ try {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/build/core": 0,
+/******/ 			"/build/script": 0,
 /******/ 			"build/style": 0
 /******/ 		};
 /******/ 		
@@ -3904,7 +4087,7 @@ try {
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["build/style"], () => (__webpack_require__("./src/js/core.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["build/style"], () => (__webpack_require__("./src/css/style.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["build/style"], () => (__webpack_require__("./src/scss/core.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

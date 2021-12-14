@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tony's Pizza Factory - Pizza</title>
+  <title>Tony's Pizza Factory - Orders</title>
   <link rel="stylesheet" href="/build/style.css">
 </head>
 
 <body>
+
   <header class="header">
     <div class="container">
       <div class="header__inner">
@@ -19,7 +20,7 @@
         <div class="header__spacer"></div>
         <ul class="header__menu">
           <li class="header__menuItem">
-            <a class="header__menuLink header__menuLink--active" href="pizza.html">Pizza</a>
+            <a class="header__menuLink" href="pizza.html">Pizza</a>
           </li>
           <li class="header__menuItem">
             <a class="header__menuLink" href="salad.html">Salad</a>
@@ -44,7 +45,7 @@
           </div>
           <ul class="header__hamburgerMenu">
             <li class="header__hamburgerMenuItem">
-              <a class="header__hamburgerMenuLink header__hamburgerMenuLink--active" href="pizza.html">Pizza</a>
+              <a class="header__hamburgerMenuLink" href="pizza.html">Pizza</a>
             </li>
             <li class="header__hamburgerMenuItem">
               <a class="header__hamburgerMenuLink" href="salad.html">Salad</a>
@@ -62,9 +63,13 @@
   </header>
 
   <main class="sections container">
-    <ul class="grid" data-pizza></ul>
+    <div class="heading">
+      <div class="heading__text">
+        Orders
+      </div>
+    </div>
+    <ul class="list" data-orders></ul>
   </main>
-
 
   <footer class="footer">
     <div class="container">

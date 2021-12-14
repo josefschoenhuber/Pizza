@@ -2,28 +2,165 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tony's Pizza Factory - Feedback</title>
-    <link rel="stylesheet" href="/build/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tony's Pizza Factory - Feedback</title>
+  <link rel="stylesheet" href="/build/style.css">
 </head>
 
 <body>
-
-    <header>
-        <div class="topnav" id="myTopnav">
-            <a href="/">Tony's Pizza Factory</a>
-            <a href="pizza.html">Pizza</a>
-            <a href="salad.html">Salad</a>
-            <a href="drinks.html">Soft Drinks</a>
-            <a href="feedback.html" class="active">Feedback</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a class="header__logo" href="/">
+          <img class="header__logoItem" src="/static/images/Logo.svg" alt="Logo">
+        </a>
+        <div class="header__spacer"></div>
+        <ul class="header__menu">
+          <li class="header__menuItem">
+            <a class="header__menuLink" href="pizza.html">Pizza</a>
+          </li>
+          <li class="header__menuItem">
+            <a class="header__menuLink" href="salad.html">Salad</a>
+          </li>
+          <li class="header__menuItem">
+            <a class="header__menuLink" href="drinks.html">Soft Drinks</a>
+          </li>
+          <li class="header__menuItem">
+            <a class="header__menuLink header__menuLink--active" href="feedback.html">Feedback</a>
+          </li>
+        </ul>
+        <button class="header__ordersButton">
+          <a class="header__ordersButtonLink" href="/pages/orders.html">
+            orders <span class="header__ordersButtonIcon"></span>
+          </a>
+        </button>
+        <div class="header__hamburger">
+          <div class="header__hamburgerIcon">
+            <span class="header__hamburgerLine"></span>
+            <span class="header__hamburgerLine"></span>
+            <span class="header__hamburgerLine"></span>
+          </div>
+          <ul class="header__hamburgerMenu">
+            <li class="header__hamburgerMenuItem">
+              <a class="header__hamburgerMenuLink" href="pizza.html">Pizza</a>
+            </li>
+            <li class="header__hamburgerMenuItem">
+              <a class="header__hamburgerMenuLink" href="salad.html">Salad</a>
+            </li>
+            <li class="header__hamburgerMenuItem">
+              <a class="header__hamburgerMenuLink" href="drinks.html">Soft Drinks</a>
+            </li>
+            <li class="header__hamburgerMenuItem">
+              <a class="header__hamburgerMenuLink header__hamburgerMenuLink--active" href="feedback.html">Feedback</a>
+            </li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
+  <main class="sections">
+    <div class="container">
+      <div class="heading">
+        <div class="heading__text">
+          Feedbacks
+        </div>
+      </div>
+      <ul class="list" data-feedback></ul>
+    </div>
+    <div class="feedback">
+      <div class="container">
+        <div class="feedback__inner">
+          <div class="feedback__title">
+            <h4 class="feedback__titleText">
+              Send us a feedback
+            </h4>
+          </div>
+          <div class="feedback__form">
+            <form id="feedback">
+              <div class="feedback__inputRow">
+                <div class="feedback__inputBox">
+                  <input class="feedback__input" type="text" placeholder="Enter your first name" id="firstName" />
+                  <div class="error error--firstName"></div>
+                </div>
 
+                <div class="feedback__inputBox">
+                  <input class="feedback__input" type="text" placeholder="Enter your last name" id="lastName" />
+                  <div class="error error--lastName"></div>
+                </div>
+              </div>
+
+              <div class="feedback__inputBox">
+                <input class="feedback__input" type="email" placeholder="Enter your email" id="email" />
+                <span class="error error--email"></span>
+              </div>
+
+              <select class="feedback__select" id="country">
+                <option disabled selected value> -- select a country -- </option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="Box">Rest of World</option>
+              </select>
+              <span class="error error--country"></span>
+
+              <div class="feedback__inputBox">
+                <input class="feedback__input" type="password" placeholder="Enter password" id="password" />
+                <span class="error error--password"></span>
+              </div>
+
+
+              <div class="feedback__inputBox feedback__inputBox--last">
+                <input class="feedback__input" type="password" placeholder="Enter password (check)"
+                  id="passwordCheck" />
+                <span class="error error--passwordCheck"></span>
+              </div>
+
+
+              <!-- <input class="checkbox" type="checkbox" id="newsletter" />Send me monthly newsletter
+                            <span class="error error--newsletter"></span> -->
+
+              <h4 class="feedback__title">How do you like our Pizza?</h4>
+              <div class="feedback__radios">
+                <input class="feedback__radio" type="radio" id="ratingAwesome" name="rating" value="1">
+                <label for="ratingAwesome" class="feedback__label">Awesome</label>
+                <input class="feedback__radio" type="radio" id="ratingGood" name="rating" value="2">
+                <label for="ratingGood" class="feedback__label">Good</label>
+                <input class="feedback__radio" type="radio" id="ratingOkay" name="rating" value="3">
+                <label for="ratingOkay" class="feedback__label">Okay</label>
+                <input class="feedback__radio" type="radio" id="ratingPoor" name="rating" value="4">
+                <label for="ratingPoor" class="feedback__label">Poor</label>
+              </div>
+
+              <span class="error error--rating"></span>
+
+              <h4 class="feedback__title">What do you think about our prizes?</h4>
+              <div class="feedback__radios">
+                <input class="feedback__radio" type="radio" id="pricingFair" name="pricing" value="1">
+                <label for="pricingFair" class="feedback__label">Fair</label>
+                <input class="feedback__radio" type="radio" id="pricingOkay" name="pricing" value="2">
+                <label for="pricingOkay" class="feedback__label">Okay</label>
+                <input class="feedback__radio" type="radio" id="pricingExpensive" name="pricing" value="3">
+                <label for="pricingExpensive" class="feedback__label">Expensive</label>
+              </div>
+
+              <span class="error error--pricing"></span>
+
+              <h4 class="feedback__title">What is your question?</h4>
+
+              <div class="feedback__inputRow">
+                <textarea class="feedback__textarea" id="question" rows="4" placeholder="Your question..."></textarea>
+              </div>
+              <span class="error error--question"></span>
+
+              <button class="feedback__button" id="submitButton">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- 
     <div class="row">
         <div class="col-1 col-s-1">
             <div class="card2">
@@ -92,7 +229,7 @@
                     <span class="error error--question"></span>
                     <br><br>
 
-                    <button id="submitButton">Submit Feedback</button>
+                    <button id="submitButton" class="disabled">Submit Feedback</button>
 
                 </form>
 
@@ -104,43 +241,41 @@
 
 
 
-    <footer>
+-->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__columns">
 
-        <div class="row">
-            <div class="col-1 col-s-1">
-                <div class="card">
-                    <h5>Hours:
-                        <dl>Mon-Thu: 11am - 23pm</dl>
-                        <dl>Fri-Sat: - 24pm</dl>
-                        <dl>Sunday closed</dl>
-                    </h5>
-                </div>
-            </div>
-
-            <div class="col-2 col-s-2">
-                <div class="card">
-                    <h4>
-                        <p><q>The Pizzeria is one place I have been wanting to visit for a long time. The reason being
-                                their
-                                Rustica pizza which absolutely blew me away.</q> Jimmy
-                    </h4>
-                </div>
-            </div>
+          <div class="footer__column">
+            <h5 class="footer__columnTitle">Hours</h5>
+            <dl>Mon-Thu: 11am - 23pm</dl>
+            <dl>Fri-Sat: - 24pm</dl>
+            <dl>Sunday closed</dl>
+          </div>
 
 
-            <div class="col-3 col-s-3">
-                <div class="card">
-                    <h5>Address:
-                        <dl> Tony's Pizza Factory</dl>
-                        <dl>2122 N Clark St</dl>
-                        <dl> Chicago, IL 60614, USA</dl>
-                    </h5>
-                </div>
-            </div>
+          <div class="footer__column">
+            <h5 class="footer__columnTitle">Address</h5>
+            <dl> Tony's Pizza Factory</dl>
+            <dl>2122 N Clark St</dl>
+            <dl> Chicago, IL 60614, USA</dl>
+          </div>
+
+          <div class="footer__quote">
+            <h4>
+              <p><q>"The Pizzeria is one place I have been wanting to visit for a
+                  long
+                  time. The reason being
+                  their Rustica pizza which absolutely blew me away."</q>
+                <span class="footer__quoteAuthor">~ Jimmy</span>
+            </h4>
+          </div>
         </div>
-
-    </footer>
-    <script type="module" src="/build/core.js"></script>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/build/script.js"></script>
 </body>
 
 </html>

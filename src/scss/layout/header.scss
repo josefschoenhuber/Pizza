@@ -1,0 +1,189 @@
+.header {
+  $root: &;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $cMain;
+  z-index: 100;
+
+  &__spacer {
+    flex: 1;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+
+  &__logo {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    transition: .2s;
+    position: relative;
+    z-index: 200;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  &__logoItem {
+    max-width: 80px;
+  }
+
+  &__menu {
+    display: flex;
+    max-height: 100%;
+
+    @include rwd('tablet') {
+      display: none;
+    }
+  }
+
+  &__menuItem {
+    margin: 0 10px;
+  }
+
+  &__menuLink {
+    display: block;
+    padding: 0 5px;
+    height: 100%;
+    line-height: 70px;
+    transition: 0.1s;
+
+    &:hover {
+      opacity: .5;
+    }
+
+    &--active {
+      font-weight: 700;
+      border-bottom: 3px solid $cBlack;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    margin: auto 0;
+
+    @include rwd('tablet') {
+      display: block;
+    }
+
+    &--active {
+      #{$root}__hamburgerLine {
+        &:nth-child(1) {
+          -webkit-transform: translateY(12px) rotate(45deg);
+          -ms-transform: translateY(12px) rotate(45deg);
+          -o-transform: translateY(12px) rotate(45deg);
+          transform: translateY(12px) rotate(45deg);
+        }
+
+        &:nth-child(3) {
+          -webkit-transform: translateY(-12px) rotate(-45deg);
+          -ms-transform: translateY(-12px) rotate(-45deg);
+          -o-transform: translateY(-12px) rotate(-45deg);
+          transform: translateY(-12px) rotate(-45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+      }
+
+      #{$root}__hamburgerMenu {
+        right: 0;
+      }
+    }
+  }
+
+  &__hamburgerIcon {
+    position: relative;
+    z-index: 200;
+  }
+
+  &__hamburgerLine {
+    width: 40px;
+    height: 4px;
+    background-color: $cBlack;
+    display: block;
+    margin: 8px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__hamburgerMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    background-color: $cMain;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    transition: .3s;
+
+    &--active {
+      right: 0;
+    }
+  }
+
+  &__hamburgerMenuLink {
+    display: block;
+    font-size: 1.6rem;
+    padding: 15px;
+
+    &--active {
+      border-bottom: 3px solid;
+      font-weight: 600;
+    }
+  }
+
+  &__ordersButton {
+    height: 40px;
+    border-radius: 10px;
+    background-color: $cSec;
+    color: $cWhite;
+    font-weight: 600;
+    transition: .2s;
+    margin-left: 20px;
+
+    &:hover {
+      background-color: $cWhite;
+      color: $cSec;
+    }
+
+    @include rwd ('large-tablet') {
+      margin-right: 20px;
+      margin-left: 0;
+    }
+  }
+
+  &__ordersButtonLink {
+    display: block;
+    height: 100%;
+    line-height: 40px;
+    padding: 0 30px;
+  }
+
+  &__ordersButtonIcon {
+    @extend %fa-icon;
+    @extend .fas;
+
+    &:after {
+      content: fa-content($fa-var-shopping-cart);
+    }
+  }
+}

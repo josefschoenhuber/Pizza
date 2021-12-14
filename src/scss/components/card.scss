@@ -1,0 +1,142 @@
+.card {
+  border-radius: 30px;
+  background-color: $cWhite;
+  box-shadow: $cShadow;
+  overflow: hidden;
+  transition: .2s;
+
+  &--clickable:hover {
+    transform: scale(1.05);
+  }
+
+  &__content {
+    padding: 20px;
+
+    &--biggerPadding {
+      padding: 35px;
+    }
+
+    &--row {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+
+      @include rwd ('large-phone') {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    max-height: 180px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+
+  &__buttonPrice {
+    position: relative;
+    background-color: $cSec;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: $cWhite;
+    transition: .2s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $cGreen;
+    }
+  }
+
+  &__cartIcon {
+    @extend %fa-icon;
+    @extend .fas;
+
+    &:after {
+      content: fa-content($fa-var-cart-plus);
+    }
+  }
+
+  &__buttonTooltip {
+    position: absolute;
+    top: calc(-100% - 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $cWhite;
+    color: $cSec;
+    font-weight: 400;
+    font-size: 1.2rem;
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: $cShadow;
+    opacity: 0;
+    transition: .2s;
+
+    &--visible {
+      opacity: 1;
+      top: calc(-100% - 10px);
+    }
+  }
+
+  &__number {
+    font-size: 5rem;
+    font-weight: 700;
+
+    @include rwd ('large-phone') {
+      font-size: 3rem;
+    }
+  }
+
+  &__name {
+    flex: 1;
+    font-size: 1.8rem;
+
+    @include rwd ('large-phone') {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  &__type {
+    font-size: 5rem;
+
+    @include rwd ('large-phone') {
+      font-size: 4rem;
+    }
+  }
+
+  &__header {
+    margin-bottom: 15px;
+  }
+
+  &__name {
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  &__email {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: .7;
+    }
+  }
+
+  &__pizzaRating {
+    margin-bottom: 10px;
+  }
+
+  &__ratings {
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+}
